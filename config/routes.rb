@@ -1,6 +1,25 @@
 RailsinstallerDemo::Application.routes.draw do
+ 
+
+  resources :home do
+    collection do
+      post :scape
+    end
+  end
+  
+  resources :schedules
+
+  resources :users
+
+  resources :charts
+
+  resources :posts do
+    resources :comments
+  end  
+  get "home/index"
   get "welcome/index"
 
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -50,7 +69,7 @@ RailsinstallerDemo::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'welcome#index'
+  root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
 

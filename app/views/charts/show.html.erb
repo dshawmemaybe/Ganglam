@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Song:</b>
+  <%= @chart.song %>
+</p>
+
+<p>
+  <b>Artist:</b>
+  <%= @chart.artist %>
+</p>
+
+
+<%= link_to 'Edit', edit_chart_path(@chart) %> |
+<%= link_to 'Back', charts_path %>

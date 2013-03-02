@@ -30,6 +30,8 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     builder (3.0.4)
+    childprocess (0.3.8)
+      ffi (~> 1.0, >= 1.0.11)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -37,10 +39,20 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
+    commonwatir (4.0.0)
+    domain_name (0.5.7)
+      unf (~> 0.0.3)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    ffi (1.4.0-x86-mingw32)
     hike (1.2.1)
+    hoe (3.5.1)
+      rake (>= 0.8, < 11.0)
+    httparty (0.10.2)
+      multi_json (~> 1.0)
+      multi_xml (>= 0.5.2)
+    httpclient (2.3.3)
     i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (2.2.0)
@@ -51,9 +63,24 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mechanize (2.5.1)
+      domain_name (~> 0.5, >= 0.5.1)
+      mime-types (~> 1.17, >= 1.17.2)
+      net-http-digest_auth (~> 1.1, >= 1.1.1)
+      net-http-persistent (~> 2.5, >= 2.5.2)
+      nokogiri (~> 1.4)
+      ntlm-http (~> 0.1, >= 0.1.1)
+      webrobots (~> 0.0, >= 0.0.9)
     mime-types (1.20.1)
+    mini_magick (3.2.1)
+      subexec (~> 0.0.4)
     multi_json (1.5.0)
+    multi_xml (0.5.3)
     mysql2 (0.3.11-x86-mingw32)
+    net-http-digest_auth (1.2.1)
+    net-http-persistent (2.8)
+    nokogiri (1.5.6-x86-mingw32)
+    ntlm-http (0.1.1)
     polyglot (0.3.3)
     rack (1.4.4)
     rack-cache (1.2)
@@ -78,17 +105,28 @@ GEM
       rdoc (~> 3.4)
       thor (~> 0.14.6)
     rake (10.0.3)
+    rautomation (0.7.3)
+      ffi
     rdoc (3.12.1)
       json (~> 1.4)
+    rubyzip (0.9.9)
+    s4t-utils (1.0.4)
+      hoe (>= 1.3.0)
     sass (3.2.5)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    selenium-webdriver (2.30.0)
+      childprocess (>= 0.2.5)
+      multi_json (~> 1.0)
+      rubyzip
+      websocket (~> 1.0.4)
     sprockets (2.1.3)
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    subexec (0.0.4)
     thor (0.14.6)
     tilt (1.3.3)
     treetop (1.4.12)
@@ -98,14 +136,58 @@ GEM
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    unf (0.0.5)
+      unf_ext
+    unf_ext (0.0.6-x86-mingw32)
+    user-choices (1.1.6.1)
+      builder (>= 2.1.2)
+      s4t-utils (>= 1.0.3)
+      xml-simple (>= 1.0.11)
+    watir (4.0.2-x86-mingw32)
+      commonwatir (~> 4)
+      watir-classic (~> 3.2)
+      watir-webdriver
+    watir-classic (3.4.0)
+      ffi (~> 1.0)
+      multi_json
+      nokogiri
+      rautomation (~> 0.7.2)
+      user-choices
+      win32-process (>= 0.5.5)
+      win32screenshot
+      windows-pr (>= 0.6.6)
+    watir-webdriver (0.6.2)
+      selenium-webdriver (>= 2.18.0)
+    webrobots (0.1.0)
+    websocket (1.0.7)
+    win32-api (1.4.8-x86-mingw32)
+    win32-process (0.7.1)
+      ffi (>= 1.0.0)
+    win32screenshot (1.0.7)
+      ffi (~> 1.0)
+      mini_magick (~> 3.2.1)
+      rautomation (~> 0.7.0)
+    windows-api (0.4.2)
+      win32-api (>= 1.4.5)
+    windows-pr (1.2.2)
+      win32-api (>= 1.4.5)
+      windows-api (>= 0.3.0)
+    xml-simple (1.1.2)
 
 PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  httparty
+  httpclient
   jquery-rails
+  json
+  mechanize
   mysql2
+  nokogiri
   rails (= 3.2.1)
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
+  watir
+  watir-webdriver
