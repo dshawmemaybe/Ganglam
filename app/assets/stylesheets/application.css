@@ -11,7 +11,6 @@
  *= require_self
  *= require_tree .
 */
-
 * {
 	margin: 0;
 	padding: 0;
@@ -25,10 +24,10 @@ div {
 	position: relative;
 	background: white;
 	height: 50px;
-	z-index:1000;
-	-webkit-box-shadow: 0 2px 3px rgba(0,0,0,.25);
-	-moz-box-shadow: 0 2px 3px rgba(0,0,0,.25);
-	box-shadow: 0 2px 3px rgba(0,0,0,.25);
+	z-index:9;
+	-webkit-box-shadow: 0 2px 3px 1px rgba(0,0,0,.25);
+	-moz-box-shadow: 0 2px 3px 1px rgba(0,0,0,.25);
+	box-shadow: 0 2px 3px 1px rgba(0,0,0,.25);
 	
 }
 
@@ -44,13 +43,14 @@ div {
 	margin-left: auto;
 	margin-right:auto;
 	width: 960px;
+	height:50px;
 }
 
 #navcontainer {
 	z-index: 1001;
 	float:left;
 	position:relative;
-	width:300px;
+	width:275px;
 	height:50px;
 	text-align: center;
 }
@@ -123,6 +123,34 @@ div {
 	width:100%;
 }
 
+#searchbartop {
+	position:relative ;
+	float:left;
+	text-align:center;
+	width:350px;
+	height:50px;
+}
+
+#logintop {
+	float:left;
+	text-align: center;
+	width:80px;
+	height: 50px;
+}
+
+#searchbar {
+	margin-top:10px;
+	vertical-align: middle;
+}
+
+a#dLabel{
+	font-family: 'Helvetica Neue', Arial, Helvetica, FreeSans, sans-serif ;
+	color: black;
+	font-size: 1.1em;
+	font-weight: bold;
+	text-decoration: none;
+}
+
 #maincontainer {
 	position:relative;
 	background-color:#ED0000;
@@ -134,10 +162,10 @@ div {
 #sidebar {
 	float:left;
 	position:relative;
-	background-color:#A8A8A8;
-	width: 150px;
-	z-index:800;
+	width: 200px;
+	z-index:8;
 	min-height: 600px;
+	background-image: -webkit-linear-gradient(top, white, #e6e6e6)
 }
 
 #html {
@@ -145,14 +173,22 @@ div {
 }
 
 #maincontentholder {
-	width:810px;
+	width:760px;
 	float:left;
 	background-color:#ED0000;
 	position:relative;
-	z-index:800;
+	z-index:8;
 	min-height: 600px;
 }
-
+/*
+.dropdown-menu {
+	float:none !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+	position:relative !important;
+	display:table !important;
+}
+*/
 #maincontent {
 
 	margin: 3px 3px 0px 3px;
@@ -161,7 +197,7 @@ div {
 	min-height: 597px;
 	-webkit-box-shadow: 2px 2px 3px rgba(0,0,0,.25);
 	-moz-box-shadow: 0px 2px 3px rgba(0,0,0,.25);
-	box-shadow: 0px 2px 3px rgba(0,0,0,.25);
+	box-shadow: 2px 2px 3px rgba(0,0,0,.25);
 
 }
 #content{
@@ -180,6 +216,6 @@ div {
 	-webkit-box-shadow: 0px -2px 3px rgba(0,0,0,.25);
 	background-color: black;
 	position:relative;
-	z-index:1001;
+	z-index:10;
 	height:200px;
 }

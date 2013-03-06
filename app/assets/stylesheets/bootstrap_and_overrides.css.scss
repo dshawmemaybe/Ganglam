@@ -1,0 +1,44 @@
+@import "bootstrap";
+@import "bootstrap-responsive";
+
+.headerbar {
+	@extend .row;
+}
+
+.headerlogo {
+	@extend .span3; 
+	background:red;
+
+}
+
+.headernav{
+	@extend .span3; 
+	background:red;
+}
+
+.headersearch{
+	@extend .span3; 
+	background:red;
+}
+
+.headerlogin {
+	@extend .span3; 
+	background:red;
+}
+
+.settingsdropdown-menu {
+	@extend .dropdown-menu;
+	min-width:80px ;
+}
+
+.settingsdropdown {
+	@extend .dropdown;
+	height:30px;
+	width:80px;
+	line-height:30px;
+	text-align:right;
+	margin-top:10px;
+	margin-right:5px;
+
+	float:right;
+}
