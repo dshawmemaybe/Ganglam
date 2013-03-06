@@ -20,10 +20,14 @@
 	</div>
 </div>
 <div id = "maincontainer">
-<div id = "sidebar">
-</div>	
 	<div id = "content">
-		<%= yield %>
+		<div id = "sidebar">
+		</div>
+		<div id = "maincontentholder">
+			<div id = "maincontent">
+			<%= yield %>
+			</div>
+		</div>
 	</div>
 </div>
 <div id = "footer">
