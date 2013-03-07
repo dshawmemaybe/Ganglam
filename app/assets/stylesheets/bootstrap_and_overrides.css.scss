@@ -1,5 +1,4 @@
 @import "bootstrap";
-@import "bootstrap-responsive";
 
 .headerbar {
 	@extend .row;
@@ -29,6 +28,7 @@
 .settingsdropdown-menu {
 	@extend .dropdown-menu;
 	min-width:80px ;
+	text-align:center;
 }
 
 .settingsdropdown {
@@ -36,9 +36,14 @@
 	height:30px;
 	width:80px;
 	line-height:30px;
-	text-align:right;
+	text-align:center;
 	margin-top:10px;
 	margin-right:5px;
 
 	float:right;
 }
+
+.dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-submenu:hover > a {
+	background: #00AA72;
+}
+

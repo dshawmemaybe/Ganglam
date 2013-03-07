@@ -15,7 +15,6 @@ gem 'mechanize'
 gem 'watir-webdriver'
 gem 'watir'
 
-gem 'bootstrap-sass'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -24,6 +23,7 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
 
+  gem 'bootstrap-sass', '~> 2.3.0.1'
   gem 'uglifier', '>= 1.0.3'
 
   

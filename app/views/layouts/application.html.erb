@@ -5,8 +5,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://raw.github.com/twitter/bootstrap/master/js/bootstrap-dropdown.js"></script>
+
 </head>
 <body>
 <div id = "top">
@@ -37,13 +36,56 @@
 <div id = "maincontainer">
 	<div id = "content">
 		<div id = "sidebar">
-			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-  <li><a tabindex="-1" href="#">Action</a></li>
-  <li><a tabindex="-1" href="#">Another action</a></li>
-  <li><a tabindex="-1" href="#">Something else here</a></li>
-  <li class="divider"></li>
-  <li><a tabindex="-1" href="#">Separated link</a></li>
-</ul>
+			<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        Groups
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse">
+      <div class="accordion-inner">
+        Anim pariat Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsfur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+        Users
+      </a>
+    </div>
+    <div id="collapseTwo" class="accordion-body collapse">
+      <div class="accordion-inner">
+        Anim pariatur cliche...
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+        Display Options
+      </a>
+    </div>
+    <div id="collapseThree" class="accordion-body collapse">
+      <div class="accordion-inner">
+        Anim pariat Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsfur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+        Functions
+      </a>
+    </div>
+    <div id="collapseFour" class="accordion-body collapse">
+      <div class="accordion-inner">
+        Anim pariat Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsfur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf
+      </div>
+    </div>
+  </div>
+</div>
 		</div>
 		<div id = "maincontentholder">
 			<div id = "maincontent">

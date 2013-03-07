@@ -11,6 +11,8 @@
  *= require_self
  *= require_tree .
 */
+
+
 * {
 	margin: 0;
 	padding: 0;
@@ -22,7 +24,7 @@ div {
 
 #top {
 	position: relative;
-	background: white;
+	background-image: -webkit-linear-gradient(top, white, #e6e6e6);
 	height: 50px;
 	z-index:9;
 	-webkit-box-shadow: 0 2px 3px 1px rgba(0,0,0,.25);
@@ -76,7 +78,7 @@ div {
 }
 
 #navcontainer ul li.active {
-	background: #ED0000;
+	background: #00AA72;
 	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
 }
@@ -88,27 +90,26 @@ div {
 
 #navcontainer ul li a:hover {
 	color:black;
-	background: rgba(237,0,0,0);
 	cursor: pointer;
 }
 
 #navcontainer ul li.active a:hover{
 	color:white;
-	background: #ED0000;
+	background: #00AA72;
 	cursor: pointer;
 
 }
 
 #navcontainer ul li.active:hover{
 	color:white;
-	background: #ED0000;
+	background: #00AA72;
 	cursor: pointer;
 
 }
 
 #navcontainer ul li:hover {
 	color:black;
-	background: rgba(237,0,0,.1);
+	background: rgba(0,67,45,.1);
 	cursor: pointer;
 	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
@@ -153,7 +154,7 @@ a#dLabel{
 
 #maincontainer {
 	position:relative;
-	background-color:#ED0000;
+	background-color:#00AA72;
 	-webkit-box-shadow: 0px 2px 3px rgba(0,0,0,.25);
 	-moz-box-shadow: 0px 2px 3px rgba(0,0,0,.25);
 	box-shadow: 0px 2px 3px rgba(0,0,0,.25);
@@ -175,7 +176,7 @@ a#dLabel{
 #maincontentholder {
 	width:760px;
 	float:left;
-	background-color:#ED0000;
+	background-color:#00AA72;
 	position:relative;
 	z-index:8;
 	min-height: 600px;
@@ -207,7 +208,7 @@ a#dLabel{
 	margin-right: auto;
 	background-color:white;
 	/*background-color:#ED0000;*/
-	color:white;
+	color:black;
 	overflow:hidden;
 	
 	
