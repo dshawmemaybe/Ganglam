@@ -15,4 +15,5 @@
 //= require bootstrap-collapse
 //= require bootstrap-dropdown
 //= require bootstrap-transition
+//= require bootstrap-tooltip
 //= require_tree .
