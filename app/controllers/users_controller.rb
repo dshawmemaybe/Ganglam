@@ -1,14 +1,13 @@
 class UsersController < ApplicationController
-
-  layout "users.html.erb"
   # GET /users
   # GET /users.json
+  
   def index
     @users = User.all
-
+    @groups = Group.all
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @users }
+      format.json { render json: {:users => @users, :groups => @groups} }
     end
   end
 
@@ -27,7 +26,7 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-
+  @groups = User.fields(:group_ids).all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @user }
@@ -37,6 +36,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    @groups = Group.all
   end
 
   # POST /users

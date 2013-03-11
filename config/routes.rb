@@ -1,6 +1,18 @@
 RailsinstallerDemo::Application.routes.draw do
  
 
+  resources :groups do
+    member do
+      put :removeuser
+    end
+  end
+
+  resources :courses
+
+  resources :tasks
+
+  resources :projects
+
   resources :home do
     collection do
       post :scape
@@ -10,6 +22,8 @@ RailsinstallerDemo::Application.routes.draw do
   resources :schedules
 
   resources :users
+
+  resources :invite
 
   resources :charts
 

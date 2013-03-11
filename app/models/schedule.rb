@@ -1,3 +1,7 @@
-class Schedule < ActiveRecord::Base
-	belongs_to :user
+class Schedule 
+	include MongoMapper::EmbeddedDocument
+
+	key :userid, String, :required => true
+
+	many :courses
 end

@@ -1,5 +1,8 @@
 @import "bootstrap";
 
+html {
+	margin-top:50px;
+}
 .headerbar {
 	@extend .row;
 }
@@ -49,3 +52,20 @@
 	background: #00AA72;
 }
 
+input[type=text]:focus {
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0,170,114, 1);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0,170,114, 1);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0,170,114, 1);
+}
+
+ul.typeahead.dropdown-menu {
+	text-align:left;
+}
+
+ul.typeahead.dropdown-menu li.active a{
+	background: #00AA72;
+}
+
+.accordion-inner {
+	padding:0;
+}

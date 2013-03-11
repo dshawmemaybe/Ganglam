@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Groupid:</b>
+  <%= @group.groupid %>
+</p>
+
+<p>
+  <b>User_ids:</b>
+  <ul>
+  <% @group.user_ids.each { |user| %>
+  <li><%= user %> <%= button_to "Remove", {:action => :removeuser, :user => user}, :method => :put %></li>
+  <% } %>
+  </ul>
+</p>
+<p>
+  <b>Public:</b>
+  <%= @group.public %>
+</p>
+
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>

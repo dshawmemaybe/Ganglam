@@ -1,5 +1,4 @@
 GEM
-  remote: https://rubygems.org/
   specs:
     actionmailer (3.2.1)
       actionpack (= 3.2.1)
@@ -31,6 +30,9 @@ GEM
     arel (3.0.2)
     bootstrap-sass (2.3.0.1)
       sass (~> 3.2)
+    bson (1.8.3)
+    bson_ext (1.8.3)
+      bson (~> 1.8.3)
     builder (3.0.4)
     childprocess (0.3.8)
       ffi (~> 1.0, >= 1.0.11)
@@ -76,6 +78,12 @@ GEM
     mime-types (1.20.1)
     mini_magick (3.2.1)
       subexec (~> 0.0.4)
+    mongo (1.8.3)
+      bson (~> 1.8.3)
+    mongo_mapper (0.12.0)
+      activemodel (~> 3.0)
+      activesupport (~> 3.0)
+      plucky (~> 0.5.2)
     multi_json (1.5.0)
     multi_xml (0.5.3)
     mysql2 (0.3.11-x86-mingw32)
@@ -83,6 +91,8 @@ GEM
     net-http-persistent (2.8)
     nokogiri (1.5.6-x86-mingw32)
     ntlm-http (0.1.1)
+    plucky (0.5.2)
+      mongo (~> 1.5)
     polyglot (0.3.3)
     rack (1.4.4)
     rack-cache (1.2)
@@ -109,6 +119,7 @@ GEM
     rake (10.0.3)
     rautomation (0.7.3)
       ffi
+    rb-readline (0.4.2)
     rdoc (3.12.1)
       json (~> 1.4)
     rubyzip (0.9.9)
@@ -181,15 +192,18 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (~> 2.3.0.1)
+  bson_ext
   coffee-rails (~> 3.2.1)
   httparty
   httpclient
   jquery-rails
   json
   mechanize
+  mongo_mapper
   mysql2
   nokogiri
   rails (= 3.2.1)
+  rb-readline
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
   watir

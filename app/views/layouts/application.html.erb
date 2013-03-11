@@ -5,7 +5,6 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-
 </head>
 <body>
 <div id = "top">
@@ -14,16 +13,26 @@
 		<div id = "navcontainer">
 			<ul id = "nav">
 				<li class = "active"><a href = "/">Home</a></li>
-				<li ><a href = "/users/">Invite</a></li>
+				<li ><a href = "/invite/">Invite</a></li>
 				<li ><a>My Sched</a></li>
 			</ul>
 		</div>
-		<div id = "searchbartop"><input type="text" placeholder = "Search for a group or user" data-provide="typeahead" id = "searchbar">
+
+    <% 
+usersandgroups = []
+Group.all.each {|group| 
+usersandgroups.push("Group: " + group.groupid) 
+} 
+
+User.all.each {|user|
+usersandgroups.push("User: " + user.firstname + " " + user.lastname)}
+%>
+		<div id = "searchbartop"><input type="text" placeholder = "Search for a group or user" data-provide="typeahead" id = "searchbar"  data-source= '<%= usersandgroups %>' >
 			<button type="submit" class="btn">Search</button>
 		</div>
 		<div id = "logintop"><div class="settingsdropdown">
   <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown"  href="#">
-  <%= image_tag("settings.png", :width => '30') %> </a>
+  <%= image_tag("settings.png", :width => '20') %> </a>
   <ul class="settingsdropdown-menu" role="menu" aria-labelledby="dLabel">
    <li><a tabindex="-1" href="#">Logout</a></li>
   <li><a tabindex="-1" href="#">Test</a></li>
@@ -44,7 +53,13 @@
     </div>
     <div id="collapseOne" class="accordion-body collapse">
       <div class="accordion-inner">
-        Anim pariat Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsfur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf
+         <ul class = "groupsidebar">
+          <% Group.sort(:groupid).each { |group| %>
+            <li> <%= link_to(Group.where(:groupid => group.groupid).first) do %><h3><%= group.groupid %></h3><% end %>
+
+            </li>
+          <% } %>
+        </ul>
       </div>
     </div>
   </div>
@@ -56,7 +71,13 @@
     </div>
     <div id="collapseTwo" class="accordion-body collapse">
       <div class="accordion-inner">
-        Anim pariatur cliche...
+        <ul class = "usersidebar">
+        <% User.sort(:firstname).each { |user| %>
+           <li> 
+            <%= link_to(User.where(:userid => user.userid).first) do %><h3><%= user.firstname + " " + user.lastname %></h3><h6><%=user.userid %></h6><% end %><input type = "checkbox" class = "usersidebarcheck">
+            </li> 
+          <% } %>
+        </ul>
       </div>
     </div>
   </div>
@@ -80,7 +101,16 @@
     </div>
     <div id="collapseFour" class="accordion-body collapse">
       <div class="accordion-inner">
-        Anim pariat Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf Anim pariatur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsfur cliche...sdfgsfdgsfsfgsfgsgfgsfgsfsfgfgsfgsfgsfgsfgsfgsfgsf
+        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
+        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
+        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
+        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
+        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
+        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
+        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
+        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
+        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
+        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
       </div>
     </div>
   </div>
@@ -95,5 +125,10 @@
 </div>
 <div id = "footer">
 </div>
+<script>
+$(function() {
+  $('input#searchbar').typeahead()
+})
+</script>
 </body>
 </html>
