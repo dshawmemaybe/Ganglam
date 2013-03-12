@@ -1,0 +1,11 @@
+<%
+schedules = {}
+    User.all.each{ |user|
+    if !user.schedule.nil? && !user.schedule.id.nil?
+    schedules[user.schedule.id.to_s] = user.schedule
+    end
+    }
+
+ %>
+<%= schedules.keys %>
+ 

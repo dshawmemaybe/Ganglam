@@ -1,8 +1,20 @@
 class SchedulesController < ApplicationController
   # GET /schedules
   # GET /schedules.json
+  def getSchedules()
+    schedules = {}
+    User.all.each{ |user|
+    if !user.schedule.nil? && !user.schedule.id.nil?
+    schedules[user.schedule.id.to_s] = user.schedule
+    end
+    }
+    return schedules
+  end  
+
   def index
-    @schedules = Schedule.all
+
+    @schedules = getSchedules()
+
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +25,7 @@ class SchedulesController < ApplicationController
   # GET /schedules/1
   # GET /schedules/1.json
   def show
-    @schedule = Schedule.find(params[:id])
+    @schedule = getSchedules()[params[:id]]
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,7 +46,7 @@ class SchedulesController < ApplicationController
 
   # GET /schedules/1/edit
   def edit
-    @schedule = Schedule.find(params[:id])
+    @schedule = getSchedules()[params[:id]]
   end
 
   # POST /schedules
@@ -56,7 +68,7 @@ class SchedulesController < ApplicationController
   # PUT /schedules/1
   # PUT /schedules/1.json
   def update
-    @schedule = Schedule.find(params[:id])
+    @schedule = getSchedules()[params[:id]]
 
     respond_to do |format|
       if @schedule.update_attributes(params[:schedule])
@@ -72,7 +84,7 @@ class SchedulesController < ApplicationController
   # DELETE /schedules/1
   # DELETE /schedules/1.json
   def destroy
-    @schedule = Schedule.find(params[:id])
+    @schedule = getSchedules()[params[:id]]
     @schedule.destroy
 
     respond_to do |format|

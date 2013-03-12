@@ -30,6 +30,11 @@
   <%= @user.group_ids %>
 </p>
 
+<p>
+  <b>Schedule</b>
+  <%= link_to @user.schedule, @user.schedule %>
+
+</p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

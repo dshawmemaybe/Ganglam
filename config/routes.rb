@@ -1,6 +1,10 @@
 RailsinstallerDemo::Application.routes.draw do
  
 
+  resources :allschedules
+
+  resources :tests
+
   resources :groups do
     member do
       put :removeuser

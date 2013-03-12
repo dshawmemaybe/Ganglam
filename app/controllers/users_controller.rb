@@ -27,6 +27,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   @groups = User.fields(:group_ids).all
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @user }
@@ -43,6 +44,10 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
+    @user.schedule = Schedule.new
+    @schedule = @user.schedule
+    @schedule.userid = @user.userid
+    
 
     respond_to do |format|
       if @user.save

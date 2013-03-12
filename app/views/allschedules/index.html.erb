@@ -1,0 +1,23 @@
+<h1>Listing allschedules</h1>
+
+<table>
+  <tr>
+    <th>Userid</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @allschedules.each do |allschedule| %>
+  <tr>
+    <td><%= allschedule.userid %></td>
+    <td><%= link_to 'Show', allschedule %></td>
+    <td><%= link_to 'Edit', edit_allschedule_path(allschedule) %></td>
+    <td><%= link_to 'Destroy', allschedule, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Allschedule', new_allschedule_path %>
