@@ -10,11 +10,11 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
 //= require jquery_ujs
 //= require bootstrap-collapse
 //= require bootstrap-dropdown
 //= require bootstrap-transition
 //= require bootstrap-tooltip
 //= require bootstrap-typeahead
+//= require jquery
 //= require_tree .
