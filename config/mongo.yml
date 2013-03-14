@@ -1,0 +1,15 @@
+defaults: &defaults
+  host: 127.0.0.1
+  port: 27017
+
+development:
+  <<: *defaults
+  database: "#myapp-#{Rails.env}"
+
+test:
+  <<: *defaults
+  database: "#myapp-#{Rails.env}"
+
+# set these environment variables on your prod server
+production:
+  uri: <%= ENV['MONGOHQ_URL'] %>

@@ -58,5 +58,9 @@ module RailsinstallerDemo
 
     # Heroku requires this to be false
     config.assets.initialize_on_precompile=false
+
+    config.generators do |g|
+    g.orm :mongo_mapper
+  end
   end
 end
