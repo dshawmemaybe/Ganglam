@@ -27,10 +27,10 @@ topbar.png: topbar-ecf665f11a4df6394d7417658cc2bd6d.png
 topbar/index.png: topbar-ecf665f11a4df6394d7417658cc2bd6d.png
 turtlebg.png: turtlebg-921289f5c6ee1aefd20bf08d5d49b10e.png
 turtlebg/index.png: turtlebg-921289f5c6ee1aefd20bf08d5d49b10e.png
-application.js: application-21f4680a3a475c710d8b8a42f818beac.js
-application/index.js: application-21f4680a3a475c710d8b8a42f818beac.js
-application.css: application-a57db546b4e1d92b75e0fa11f3533d6f.css
-application/index.css: application-a57db546b4e1d92b75e0fa11f3533d6f.css
+application.js: application-a99aaaedbd1e77a51ad94649e07985d7.js
+application/index.js: application-a99aaaedbd1e77a51ad94649e07985d7.js
+application.css: application-7764922578d6b10a79297f0f531b5a83.css
+application/index.css: application-7764922578d6b10a79297f0f531b5a83.css
 jquery.min.map: jquery.min-6c267bfd2b3f36e6edccb2e584934c1c.map
 jquery/index.min.map: jquery.min-6c267bfd2b3f36e6edccb2e584934c1c.map
 glyphicons-halflings-white.png: glyphicons-halflings-white-6cccd17a7aed91dbc0157d343c68c0d9.png
