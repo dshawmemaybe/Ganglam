@@ -29,12 +29,12 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
 
-  gem 'bootstrap-sass', '~> 2.3.0.1'
   gem 'uglifier', '>= 1.0.3'
 
   
 end
 
+gem 'bootstrap-sass', '~> 2.3.0.1'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
