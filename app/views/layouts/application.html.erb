@@ -28,7 +28,7 @@ User.all.each {|user|
 usersandgroups.push("User: " + user.firstname + " " + user.lastname)}
 %>
 		<div id = "searchbartop"><input type="text" placeholder = "Search for a group or user" data-provide="typeahead" id = "searchbar"  data-source= '<%= usersandgroups %>' >
-			<button type="submit" class="btn">Search</button>
+			<div class="icon-search" type = "submit"></div>
 		</div>
 		<div id = "logintop"><div class="settingsdropdown">
   <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown"  href="#">
