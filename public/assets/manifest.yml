@@ -11,6 +11,8 @@ settings.png: settings-377c4765614e8284f0f1a2363a1f1589.png
 settings/index.png: settings-377c4765614e8284f0f1a2363a1f1589.png
 settings.psd: settings-4314669f312d2bf098662ef41be7e692.psd
 settings/index.psd: settings-4314669f312d2bf098662ef41be7e692.psd
+smallturtlebg.png: smallturtlebg-79b167a017a86bbdc842dcdc895f3400.png
+smallturtlebg/index.png: smallturtlebg-79b167a017a86bbdc842dcdc895f3400.png
 testbg.png: testbg-278142ef74b74c4d7813fe19bcaa2282.png
 testbg/index.png: testbg-278142ef74b74c4d7813fe19bcaa2282.png
 testlogo.png: testlogo-3e05644ac6cec1c1cf1abeeb9d7a7996.png
@@ -23,10 +25,12 @@ testlogo2.psd: testlogo2-6217e12f8211abe8b4738c89a49c5ae8.psd
 testlogo2/index.psd: testlogo2-6217e12f8211abe8b4738c89a49c5ae8.psd
 topbar.png: topbar-ecf665f11a4df6394d7417658cc2bd6d.png
 topbar/index.png: topbar-ecf665f11a4df6394d7417658cc2bd6d.png
-application.js: application-000363388309d5d7b89e6acbff22fbc1.js
-application/index.js: application-000363388309d5d7b89e6acbff22fbc1.js
-application.css: application-d72db5684d9f682f3a802075a607d468.css
-application/index.css: application-d72db5684d9f682f3a802075a607d468.css
+turtlebg.png: turtlebg-921289f5c6ee1aefd20bf08d5d49b10e.png
+turtlebg/index.png: turtlebg-921289f5c6ee1aefd20bf08d5d49b10e.png
+application.js: application-21f4680a3a475c710d8b8a42f818beac.js
+application/index.js: application-21f4680a3a475c710d8b8a42f818beac.js
+application.css: application-a57db546b4e1d92b75e0fa11f3533d6f.css
+application/index.css: application-a57db546b4e1d92b75e0fa11f3533d6f.css
 jquery.min.map: jquery.min-6c267bfd2b3f36e6edccb2e584934c1c.map
 jquery/index.min.map: jquery.min-6c267bfd2b3f36e6edccb2e584934c1c.map
 glyphicons-halflings-white.png: glyphicons-halflings-white-6cccd17a7aed91dbc0157d343c68c0d9.png
