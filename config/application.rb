@@ -53,6 +53,11 @@ module RailsinstallerDemo
     # Enable the asset pipeline
     config.assets.enabled = true
 
+
+ config.gem 'mongo'
+  config.gem 'mongo_mapper'
+ 
+  # remove AR 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
@@ -62,5 +67,6 @@ module RailsinstallerDemo
     config.generators do |g|
     g.orm :mongo_mapper
   end
+
   end
 end

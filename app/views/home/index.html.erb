@@ -8,4 +8,7 @@ schedules = {}
 
  %>
 <%= schedules.keys %>
- 
+
+<%= db_config = YAML::load(File.read(File.join(Rails.root, "/config/mongo.yml"))) %>
+
+<%= db_config[Rails.env]['adapter'] %>
