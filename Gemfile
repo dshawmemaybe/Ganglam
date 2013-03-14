@@ -1,6 +1,9 @@
+source 'https://rubygems.org'
 
 
-gem 'rails', '3.2.1'
+ruby '1.9.3'
+
+gem 'rails', '3.2.12'
 gem "mongo_mapper"
 gem "bson_ext"
 # Bundle edge Rails instead:
@@ -9,7 +12,7 @@ gem "bson_ext"
 gem 'rb-readline'
 
 gem 'mysql2'
-
+gem 'pg'
 gem 'httparty'
 gem 'json'
 gem 'httpclient'
@@ -17,7 +20,7 @@ gem 'nokogiri'
 gem 'mechanize'
 gem 'watir-webdriver'
 gem 'watir'
-
+gem 'thin'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
