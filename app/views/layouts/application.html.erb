@@ -10,14 +10,8 @@
 <div id = "top">
 	<div id = "header_inner">
 		<a href = "/"><div id = "logo"></div></a>
-		<div id = "navcontainer">
-			<ul id = "nav">
-				<li class = "active"><a href = "/">Home</a></li>
-				<li ><a href = "/invite/">Invite</a></li>
-				<li ><a>My Sched</a></li>
-			</ul>
-		</div>
-
+    
+		
     <% 
 usersandgroups = []
 Group.all.each {|group| 
@@ -30,7 +24,25 @@ usersandgroups.push("User: " + user.firstname + " " + user.lastname)}
 		<div id = "searchbartop"><input type="text" placeholder = "Search for a group or user" data-provide="typeahead" id = "searchbar"  data-source= '<%= usersandgroups %>' >
 			<div class="icon-search" type = "submit"></div>
 		</div>
-		<div id = "logintop"><div class="settingsdropdown">
+
+
+    <div id = "schoolname">
+      
+    </div>
+		<div id = "logintop">
+      <div id  = "username">
+       <span> Danny Shawsdfgdfgsf gsgsgsfsgfs</span>
+      </div>
+      
+    </div>
+
+    <div id = "navcontainer">
+      <ul id = "nav">
+        <li><a href = "/">Home</a></li>
+        <li ><a href = "/invite/">Help</a></li>
+      </ul>
+    </div>
+    <div class="settingsdropdown">
   <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown"  href="#">
   <%= image_tag("settings.png", :width => '20') %> </a>
   <ul class="settingsdropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -38,7 +50,7 @@ usersandgroups.push("User: " + user.firstname + " " + user.lastname)}
   <li><a tabindex="-1" href="#">Test</a></li>
   <li><a tabindex="-1" href="#">Lol</a></li>
   </ul>
-</div></div>
+      </div>
 	</div>
 </div>
 <div id = "maincontainer">
@@ -48,7 +60,7 @@ usersandgroups.push("User: " + user.firstname + " " + user.lastname)}
   <div class="accordion-group">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-        Groups
+       <i class="icon-folder-open"></i> Groups
       </a>
     </div>
     <div id="collapseOne" class="accordion-body collapse">
@@ -66,7 +78,7 @@ usersandgroups.push("User: " + user.firstname + " " + user.lastname)}
   <div class="accordion-group">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-        Users
+        <i class="icon-user"></i> Users
       </a>
     </div>
     <div id="collapseTwo" class="accordion-body collapse">
@@ -84,7 +96,7 @@ usersandgroups.push("User: " + user.firstname + " " + user.lastname)}
   <div class="accordion-group">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-        Display Options
+        <i class = "icon-th-large"></i> Display Options
       </a>
     </div>
     <div id="collapseThree" class="accordion-body collapse">
@@ -96,7 +108,7 @@ usersandgroups.push("User: " + user.firstname + " " + user.lastname)}
   <div class="accordion-group">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
-        Functions
+        <i class = "icon-wrench"></i> Functions
       </a>
     </div>
     <div id="collapseFour" class="accordion-body collapse">

@@ -30,8 +30,8 @@ html {
 
 .settingsdropdown-menu {
 	@extend .dropdown-menu;
-	min-width:80px ;
-	text-align:center;
+	min-width:80px;
+	text-align:left;
 	top: 110%;
 	left: -3px;
 }
@@ -39,7 +39,7 @@ html {
 .settingsdropdown {
 	@extend .dropdown;
 	height:30px;
-	width:80px;
+	width:30px;
 	line-height:30px;
 	text-align:center;
 	margin-top:10px;
