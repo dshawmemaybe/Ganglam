@@ -39,10 +39,9 @@ html {
 
 .settingsdropdown {
 	@extend .dropdown;
-	height:45px;
+	height:50px;
 	line-height:45px;
 	text-align:center;
-	margin-top:5px;
 	margin-right:5px;
 	float:right;
 }
@@ -71,4 +70,16 @@ ul.typeahead.dropdown-menu li.active a{
 
 a.accordion-toggle {
 	color:black;
+}
+
+.popover.bottom .arrow {
+	left:80%;
+}
+
+.popover {
+	border-radius:3px;
+}
+.popover.fade.bottom {
+	left:-21px !important;
+	margin-top:5px;
 }

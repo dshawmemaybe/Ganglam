@@ -47,17 +47,18 @@ usersandgroups.push("User: " + user.firstname + " " + user.lastname)}
     </div>
     -->
     <div class="settingsdropdown">
-      <a class = "settingsbut"><i class="icon-calendar icon-2x"></i></a>
-      <a class = "settingsbut"><i class="icon-home icon-2x"></i></a>
+      <a class = "settingsbut cal" data-placement = "bottom" data-toggle = "tooltip" title data-original-title = "My Schedule"><i class="icon-calendar icon-2x"></i></a>
+      <a class = "settingsbut home" data-placement = "bottom" href = "/" data-toggle = "tooltip" title data-original-title = "Home"><i class="icon-home icon-2x"></i></a>
       <!--
   <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown"  href="#">-->
-  <a class = "settingsbut"><i class="icon-cogs icon-2x"></i></a>
-   <!--</a>-->
+  <a class = "settingspop" data-toggle = "tooltip"  data-placement="bottom" data-toggle = "popover" data-content = "<ul id = 'setdropdown'><a><li>Schedule Settings</li></a><a><li>Log Out</li></a><li id = 'setmenudivide'></li><a><li>Help</li></a></ul>"><i class="icon-cogs icon-2x"></i></a>
+   <!--</a>
   <ul class="settingsdropdown-menu" role="menu" aria-labelledby="dLabel">
    <li><a tabindex="-1" href="#">Logout</a></li>
   <li><a tabindex="-1" href="#">Test</a></li>
   <li><a tabindex="-1" href="#">Lol</a></li>
   </ul>
+-->
       </div>
 	</div>
 </div>
@@ -66,7 +67,7 @@ usersandgroups.push("User: " + user.firstname + " " + user.lastname)}
 		<div id = "sidebar">
 			<div class="accordion" id="accordion2">
   <div class="accordion-group">
-    <div class="accordion-heading">
+    <div class="accordion-heading hq">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
        <i class="icon-sitemap icon-large"></i><h2>Headquarters</h2>
       </a>
@@ -84,7 +85,7 @@ usersandgroups.push("User: " + user.firstname + " " + user.lastname)}
     </div>
   </div>
   <div class="accordion-group">
-    <div class="accordion-heading">
+    <div class="accordion-heading groups">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
         <i class="icon-group icon-large"></i><h2>Groups</h2>
       </a>
@@ -102,7 +103,7 @@ usersandgroups.push("User: " + user.firstname + " " + user.lastname)}
     </div>
   </div>
   <div class="accordion-group">
-    <div class="accordion-heading">
+    <div class="accordion-heading users">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
         <i class = "icon-user icon-large" ></i><h2>Users</h2>
       </a>
@@ -120,7 +121,7 @@ usersandgroups.push("User: " + user.firstname + " " + user.lastname)}
     </div>
   </div>
   <div class="accordion-group">
-    <div class="accordion-heading">
+    <div class="accordion-heading display">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
         <i class = "icon-picture icon-large"></i><h2>Display Options</h2>
       </a>
@@ -143,7 +144,7 @@ usersandgroups.push("User: " + user.firstname + " " + user.lastname)}
     </div>
   </div>
   <div class="accordion-group">
-    <div class="accordion-heading">
+    <div class="accordion-heading function">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
         <i class = "icon-wrench icon-large"></i><h2>Functions</h2>
       </a>

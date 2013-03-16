@@ -17,4 +17,5 @@
 //= require bootstrap-transition
 //= require bootstrap-tooltip
 //= require bootstrap-typeahead
+//= require bootstrap-popover
 //= require_tree .

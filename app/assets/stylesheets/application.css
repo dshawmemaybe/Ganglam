@@ -13,11 +13,15 @@
  *= require font-awesome
 */
 
-a.settingsbut {
+a.settingsbut, a.settingspop {
+	display: inline-block;
 	color:black;
+	width:40px;
+	height:50px;
+	line-height: 50px;
 }
 
-a.settingsbut:hover {
+a.settingsbut:hover, a.settingspop:hover {
 	color:#00AA72;
 	text-decoration: none;
 }
@@ -27,7 +31,10 @@ a.settingsbut:hover {
 }
 i.icon-home.icon-2x {
 	font-size: 2.1em;
+	width:30px;
+	vertical-align: middle;
 }
+
 
 .settingsdropdown a:hover {
 	cursor: pointer;
@@ -37,10 +44,13 @@ i.icon-home.icon-2x {
 	margin: 0 5px 0 5px;
 }
 
-.settingsdropdown .icon-2x{
+i.icon-calendar.icon-2x, i.icon-cogs.icon-2x{
 	font-size:1.6em;
 	width:30px;
+	vertical-align: middle;
 }
+
+
 * {
 	margin: 0;
 	padding: 0;
@@ -538,3 +548,46 @@ select {
 	color: #00AA72;
 }
 
+ul#setdropdown {
+	list-style: none;
+	margin:0;
+	width:auto;
+	text-decoration: none;
+}
+
+ul#setdropdown li {
+	padding-left:20px;
+	padding-bottom: 2px;
+	padding-top: 2px;
+}
+
+ul#setdropdown li:hover {
+	background: #00AA72;
+	border-radius: 3px;
+}
+
+ul#setdropdown a {
+	color:black;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+ul#setdropdown a:hover {
+	color:white;
+}
+
+.popover-content {
+	width:160px;
+	margin:0 !important ;
+	padding:0 !important;
+}
+
+ul#setdropdown li#setmenudivide {
+	width:150px;
+	margin: 2px 0 2px 5px;
+	padding: 0;
+	font-size: 0;
+	line-height: 0;
+	height: 1px;
+	background: #DEDEDE;
+}
