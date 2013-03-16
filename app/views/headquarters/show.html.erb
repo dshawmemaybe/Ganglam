@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <b>HQ name:</b>
+  <%= @headquarter.hqname %>
+</p>
+
+<p>
+  <b>Groupscolname:</b>
+  <%= @headquarter.groupscolname %>
+</p>
+
+<p>
+  <b>Usercolname:</b>
+  <%= @headquarter.userscolname %>
+</p>
+
+
+<%= link_to 'Edit', edit_headquarter_path(@headquarter) %> |
+<%= link_to 'Back', headquarters_path %>

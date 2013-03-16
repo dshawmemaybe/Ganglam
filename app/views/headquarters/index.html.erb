@@ -1,0 +1,27 @@
+<h1>Listing headquarters</h1>
+
+<table>
+  <tr>
+    <th>HQ Name </th>
+    <th>Groups collection</th>
+    <th>Users collection</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @headquarters.each do |headquarter| %>
+  <tr>
+    <td><%= headquarter.hqname %></td>
+    <td><%= headquarter.groupscolname %></td>
+    <td><%= headquarter.userscolname %></td>
+    <td><%= link_to 'Show', headquarter %></td>
+    <td><%= link_to 'Edit', edit_headquarter_path(headquarter) %></td>
+    <td><%= link_to 'Destroy', headquarter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Headquarter', new_headquarter_path %>

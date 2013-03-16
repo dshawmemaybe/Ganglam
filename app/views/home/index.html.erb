@@ -8,3 +8,6 @@ schedules = {}
 
  %>
 <%= schedules.keys %>
+
+<% User.all.each {|s| s.avatar.reprocess! } %>
+<p> lol </p>

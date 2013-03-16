@@ -1,6 +1,9 @@
 RailsinstallerDemo::Application.routes.draw do
  
 
+  resources :headquarters
+
+
   resources :allschedules
 
   resources :tests

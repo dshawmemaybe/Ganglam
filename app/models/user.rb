@@ -1,5 +1,8 @@
+require 'paperclip'
+
 class User
 	include MongoMapper::Document
+	include Paperclip::Glue
 
 	key :userid, String
 	key :firstname, String
@@ -10,4 +13,8 @@ class User
 	
 	one :schedule
 	many :groups, :in => :group_ids
+
+	has_attached_file :avatar, :styles => {:thumb => "35x35#"}
+
+	key :avatar_file_name, String
 end

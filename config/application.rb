@@ -72,4 +72,6 @@ module RailsinstallerDemo
   end
 
   end
+Dir.glob("./lib/*.{rb}").each { |file| require file } # require each file from lib directory
+  
 end
