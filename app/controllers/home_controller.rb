@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
 
+	layout "invite"
+
   def index
   	@doc = "lol"
   end

@@ -29,6 +29,8 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     arel (3.0.2)
+    bcrypt-ruby (3.0.1)
+    bcrypt-ruby (3.0.1-x86-mingw32)
     bootstrap-sass (2.3.0.1)
       sass (~> 3.2)
     bson (1.8.3)
@@ -49,6 +51,11 @@ GEM
       execjs
     coffee-script-source (1.6.1)
     commonwatir (4.0.0)
+    devise (2.2.3)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (~> 3.1)
+      warden (~> 1.2.1)
     domain_name (0.5.8)
       unf (~> 0.0.3)
     erubis (2.7.0)
@@ -86,6 +93,9 @@ GEM
     mime-types (1.21)
     mini_magick (3.5.0)
       subexec (~> 0.2.1)
+    mm-devise (2.0)
+      devise (>= 1.2)
+      mongo_mapper (>= 0.9.0)
     mongo (1.8.3)
       bson (~> 1.8.3)
     mongo_mapper (0.12.0)
@@ -101,6 +111,7 @@ GEM
     nokogiri (1.5.6)
     nokogiri (1.5.6-x86-mingw32)
     ntlm-http (0.1.1)
+    orm_adapter (0.4.0)
     paperclip (3.4.1)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
@@ -176,6 +187,8 @@ GEM
       builder (>= 2.1.2)
       s4t-utils (>= 1.0.3)
       xml-simple (>= 1.0.11)
+    warden (1.2.1)
+      rack (>= 1.0)
     watir (4.0.2)
       commonwatir (~> 4)
       watir-webdriver
@@ -217,12 +230,14 @@ DEPENDENCIES
   bootstrap-sass (~> 2.3.0.1)
   bson_ext
   coffee-rails (~> 3.2.1)
+  devise
   font-awesome-rails
   httparty
   httpclient
   jquery-rails
   json
   mechanize
+  mm-devise
   mongo_mapper
   mysql2
   nokogiri

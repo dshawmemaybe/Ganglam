@@ -12,10 +12,14 @@
  *= require_tree .
  *= require font-awesome
 */
+html {
+	font-color: #3A4F48 !important;
+	font-family: 'Helvetica Neue', Arial, Helvetica, FreeSans, clean, sans-serif !important;
+}
 
 a.settingsbut, a.settingspop {
 	display: inline-block;
-	color:black;
+	color:#3A4F48;
 	width:40px;
 	height:50px;
 	line-height: 50px;
@@ -101,7 +105,7 @@ a.accordion-toggle h2{
 }
 
 .accordion-inner a h3{
-	color: black !important;
+	color: #3A4F48 !important;
 }
 
 .accordion-inner h3:hover, .accordion-inner a:hover{
@@ -154,7 +158,7 @@ div {
 	color:#CC0000;
 	text-align: left;
 	display:inline-block;
-	font-family: 'Helvetica Neue', Arial, Helvetica, FreeSans, sans-serif;
+	font-family: 'Helvetica Neue', Arial, Helvetica, FreeSans, clean, sans-serif;
 	font-weight: bold;
 	font-size: 0.9em;
 	line-height: 45px;
@@ -189,8 +193,8 @@ div {
 }
 
 #navcontainer ul li a{
-	font-family: 'Helvetica Neue', Arial, Helvetica, FreeSans, sans-serif;
-	color: black;
+	font-family: 'Helvetica Neue', Arial, Helvetica, FreeSans, clean, sans-serif;
+	color: #3A4F48;
 	font-size: 1.1em;
 	font-weight: bold;
 	text-decoration: none;
@@ -211,7 +215,7 @@ div {
 }
 
 #navcontainer ul li a:hover {
-	color:black;
+	color:#3A4F48;
 	cursor: pointer;
 }
 
@@ -229,7 +233,7 @@ div {
 }
 
 #navcontainer ul li:hover {
-	color:black;
+	color:#3A4F48;
 	background: rgba(0,170,114,.1);
 	cursor: pointer;
 	border-top-left-radius: 3px;
@@ -300,8 +304,8 @@ div {
 }
 
 a#dLabel{
-	font-family: 'Helvetica Neue', Arial, Helvetica, FreeSans, sans-serif ;
-	color: black;
+	font-family: 'Helvetica Neue', Arial, Helvetica, FreeSans, clean, sans-serif;
+	color: #3A4F48;
 	font-size: 1.1em;
 	font-weight: bold;
 	text-decoration: none;
@@ -346,7 +350,7 @@ ul.usersidebar h3 ,ul.displaysidebar h3, ul.functionsidebar h3{
 	padding:0;
 	font-size:13px;
 	line-height: 13px;
-	color: black;
+	color: #3A4F48;
 	width:203px;
 }
 ul.usersidebar h6{
@@ -355,7 +359,7 @@ ul.usersidebar h6{
 	padding:0;
 	font-size:11px;
 	line-height: 11px;
-	color:black;
+	color:#3A4F48;
 	font-weight:400;
 	width:203px;
 }
@@ -468,14 +472,14 @@ th{
 	margin-right: auto;
 	background-color:white;
 	/*background-color:#ED0000;*/
-	color:black;
+	color:#3A4F48;
 	overflow:hidden;
 	
 	
 }
 #footer {
 	-webkit-box-shadow: 0px -2px 3px rgba(0,0,0,.25);
-	background-color: black;
+	background-color: #3A4F48;
 	position:relative;
 	z-index:10;
 	height:150px;
@@ -523,8 +527,8 @@ select {
 	position:relative;
 	height:50px;
 	text-align:right;
-	color:black;
-	font-family: 'Helvetica Neue', Arial, Helvetica, FreeSans, sans-serif;
+	color:#3A4F48;
+	font-family: 'Helvetica Neue', Arial, Helvetica, FreeSans, clean, sans-serif;
 	font-weight: bold;
 	font-size: 1.1em;
 	margin-top:5px;
@@ -567,7 +571,7 @@ ul#setdropdown li:hover {
 }
 
 ul#setdropdown a {
-	color:black;
+	color:#3A4F48;
 	font-weight: normal;
 	text-decoration: none;
 }
@@ -591,3 +595,274 @@ ul#setdropdown li#setmenudivide {
 	height: 1px;
 	background: #DEDEDE;
 }
+
+#signupcontentholder {
+	width:960px;
+	position:relative;
+	z-index:8;
+	min-height: 500px;
+}
+/*
+.dropdown-menu {
+	float:none !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+	position:relative !important;
+	display:table !important;
+}
+*/
+#signupinfo {
+	float:left;
+	width:610px; 
+	height:500px;
+	
+}
+
+#signup {
+	width:350px;
+	height:500px;
+	float:left;
+	overflow:auto;
+}
+
+#signupparameters {
+	width:310px;
+	margin: 30px 40px 10px 10px;
+}
+
+#signupparameters input[type=password],#signupparameters input[type=email] {
+	width:270px;
+	height:35px;
+	font-size: 18px;
+	-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+	-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+	box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+}
+
+#signupterms {
+	width:285px;
+	font-size:11px;
+	margin-bottom: 10px;
+}
+
+#signupnames {
+	width:285px;
+}
+
+input#user_firstname {
+	margin-right: 1px;
+}
+
+#signupparameters a:hover{
+	cursor: pointer;
+}
+
+#signupparameters input[type=text] {
+	width:125px;
+	height:35px;
+	font-size: 18px;
+	-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+	-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+	box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+}
+
+#signupparameters h1 {
+	color: black;
+}
+
+input.signupsubmit {
+	width:285px !important;
+	height:40px;
+	background-image: -webkit-linear-gradient(top, #00E69A, #00AA72);
+	background-image: -moz-linear-gradient(top, #00E69A, #00AA72);
+	background-image: linear-gradient(top, #00E69A, #00AA72);
+	border-radius: 4px;
+	border:none;
+	color:white;
+	font-weight: bold;
+	font-size: 18px;
+	-webkit-box-shadow: 0 1px 3px 1px rgba(0,0,0,.25);
+	-moz-box-shadow: 0 1px 3px 1px rgba(0,0,0,.25);
+	box-shadow: 0 1px 3px 1px rgba(0,0,0,.25);
+}
+
+#infomain {
+	width:510px;
+	height:200px;
+	margin: 30px 20px 10px 50px;
+}
+
+#infomain p {
+	font-size: 50px;
+	font-weight: normal;
+	line-height: 55px;
+	color: black;
+}
+
+#infomain span {
+	font-size:20px;
+	line-height: 20px;
+	color: #00AA72;
+}
+
+#infodetails {
+	width:510px;
+	height:220px;
+	margin: 10px 20px 10px 50px;
+}
+
+#infodetails p {
+	font-size:10px;
+}
+
+table#infodeetstable {
+	width:510px;
+	height:220px;
+}
+
+table#infodeetstable tr{
+	width:510px;
+	height:110px;
+}
+
+table#infodeetstable td{
+	width:255px;
+	height:110px;
+}
+
+table#infodeetstable td i{
+	text-align: left;
+	color:#00AA72;
+	margin: 0 5px 0 5px;
+}
+
+table#infodeetstable td p{
+	text-align: left;
+	margin: 0 5px 0 5px;
+}
+
+#infodivider {
+	margin-top:40px;
+	width:550px;
+	margin-left: 25px;
+	border:1px solid #CCCCCC;
+}
+
+#signinholder {
+	float:right;
+	margin-top: 2px;
+	width:400px;
+	height:50px;
+
+}
+
+#signin {
+	height:30px;
+}
+
+input#user_email {
+	width:150px;
+	height:20px;
+	-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+	-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+	box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+}
+input#user_password {
+	width:150px;
+	height:20px;
+	-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+	-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+	box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.signinsubmit {
+	vertical-align: top;
+	margin-top:0px;
+	width:50px !important;
+	height:30px;
+	background-image: -webkit-linear-gradient(top, #00E69A, #00AA72);
+	background-image: -moz-linear-gradient(top, #00E69A, #00AA72);
+	background-image: linear-gradient(top, #00E69A, #00AA72);
+	border-radius: 4px;
+	border:none;
+	color:white;
+	font-weight: bold;
+	font-size: 14px;
+	-webkit-box-shadow: 0 1px 3px 1px rgba(0,0,0,.25);
+	-moz-box-shadow: 0 1px 3px 1px rgba(0,0,0,.25);
+	box-shadow: 0 1px 3px 1px rgba(0,0,0,.25);
+}
+
+input[type=submit]:hover {
+	background-image: -webkit-linear-gradient(top, #00AA72, #00875B);
+	background-image: -moz-linear-gradient(top, #00AA72 #00875B);
+	background-image: linear-gradient(top, #00AA72, #00875B);
+}
+
+#signinremember {
+	margin:0;
+	padding:0;
+	top:-10px;
+	height: 20px;
+	width:400px;
+}
+
+input#user_remember_me.signincheck {
+	position: absolute;
+	bottom:1px !important;
+}
+
+#signinrest {
+	position: absolute;
+	margin-left: 17px;
+}
+
+.signincheck {
+	margin: 0 !important;
+	margin-left: 10px;
+	max-height: 3px;
+	max-width: 3px;
+	-webkit-appearance: none;
+	  background-color: #fafafa;
+    border: 1px solid #cacece;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+    padding: 6px;
+    border-radius: 3px;
+}
+
+.signincheck:checked:active {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+ 
+.signincheck:checked {
+    background-color: #e9ecee;
+    border: 1px solid #adb8c0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+    color: #99a1a7;
+}
+
+.signincheck:checked:after {
+    content: "\2714";
+    top:-1px;
+    left:2px;
+    position: absolute;
+    font-size: 10px;
+    color: #99a1a7;
+}
+
+#signinremember label{
+	display: inline;
+	font-size: 12px;
+	line-height: 12px;
+}
+
+#signinremember a {
+	margin-left: 30px;
+}
+
+#articles {
+	margin-top: 90px;
+	width:285px;
+	text-align: left;
+}
+

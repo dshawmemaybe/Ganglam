@@ -28,7 +28,10 @@ usersandgroups.push("User: " + user.firstname + " " + user.lastname)}
    
 		<div id = "logintop">
       <a id = "loginlink" href = "#">
-      <% lol = User.where(:userid => "user8").first %>
+      <% lol = User.where(:userid => "user8").first 
+      if !current_user.nil?
+        lol = current_user
+      end  %>
       <div id = "userimage">
       <%= image_tag lol.avatar.url(:thumb) %>
     </div>
@@ -51,7 +54,7 @@ usersandgroups.push("User: " + user.firstname + " " + user.lastname)}
       <a class = "settingsbut home" data-placement = "bottom" href = "/" data-toggle = "tooltip" title data-original-title = "Home"><i class="icon-home icon-2x"></i></a>
       <!--
   <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown"  href="#">-->
-  <a class = "settingspop" data-toggle = "tooltip"  data-placement="bottom" data-toggle = "popover" data-content = "<ul id = 'setdropdown'><a><li>Schedule Settings</li></a><a><li>Log Out</li></a><li id = 'setmenudivide'></li><a><li>Help</li></a></ul>"><i class="icon-cogs icon-2x"></i></a>
+  <a class = "settingspop" data-toggle = "tooltip"  data-placement="bottom" data-toggle = "popover" data-content = "<ul id = 'setdropdown'><a><li>Schedule Settings</li><a href = '/users/sign_out' data-method = 'delete'><li>Log Out</li></a><li id = 'setmenudivide'></li><a><li>Help</li></a></ul>"><i class="icon-cogs icon-2x"></i></a>
    <!--</a>
   <ul class="settingsdropdown-menu" role="menu" aria-labelledby="dLabel">
    <li><a tabindex="-1" href="#">Logout</a></li>
