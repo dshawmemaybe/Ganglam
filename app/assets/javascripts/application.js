@@ -16,6 +16,7 @@
 //= require bootstrap-dropdown
 //= require bootstrap-transition
 //= require bootstrap-tooltip
+//= require bootstrap-modal
 //= require bootstrap-typeahead
 //= require bootstrap-popover
 //= require_tree .

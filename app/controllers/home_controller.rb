@@ -1,10 +1,16 @@
 class HomeController < ApplicationController
 
-	layout "invite"
+	layout "login"
+
+	
 
   def index
-  	@doc = "lol"
+  	
   end
+
+  def show 
+
+  end	
 
   def scape
 	b = Watir::Browser.new :chrome

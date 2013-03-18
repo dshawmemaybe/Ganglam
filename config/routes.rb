@@ -1,7 +1,6 @@
 RailsinstallerDemo::Application.routes.draw do
  
-  devise_for :users
-  
+  devise_for :users, :path_names => { :sign_in => "login", :sign_out => "logout"}, :controllers => { :sessions => "sessions", :registrations => "registrations"}
   resources :headquarters
 
 
@@ -24,9 +23,12 @@ RailsinstallerDemo::Application.routes.draw do
   resources :home do
     collection do
       post :scape
+      get :login
     end
   end
   
+  resources :welcome
+
   resources :schedules
 
   resources :users
@@ -39,7 +41,9 @@ RailsinstallerDemo::Application.routes.draw do
     resources :comments
   end  
   get "home/index"
+  get "home/login"
   get "welcome/index"
+  get "welcome/start"
 
   
   # The priority is based upon order of creation:
@@ -88,13 +92,13 @@ RailsinstallerDemo::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     productsg :resources
   #   end
-
+ 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   authenticated :user do
     root :to => "users#index"
   end  
-  root :to => "home#index"
+  root :to => "welcome#start"
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

@@ -1,5 +1,18 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
+
+
+  layout :user_layout
+
+ 
+    def user_layout
+     if current_user
+        "application"
+      else 
+       "invite"
+
+      end
+    end      
+
   # GET /users
   # GET /users.json
   def index
@@ -46,7 +59,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     @user.schedule = Schedule.new
     @schedule = @user.schedule
-    @schedule.userid = @user.userid
+    @schedule.userid = @user.email
     
 
     respond_to do |format|
@@ -63,10 +76,12 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
+
     @user = User.find(params[:id])
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
+        sign_in(@user, :bypass => true)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else

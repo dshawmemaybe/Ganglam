@@ -11,6 +11,8 @@
   <div id = "header_inner">
     <a href = "/"><div id = "logo"></div></a>  
     <div id = "signinholder">
+      <a href="#myModal" style = "float:right;margin-top:7px; margin-right:30px" role="button" class="btn" data-toggle="modal">Log in</a>
+      <!--
       <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <div id = "signin">
   <%= f.email_field :email,:placeholder => "Email", :autofocus => true %>
@@ -18,10 +20,11 @@
   <%= f.submit "Log in", :class => "signinsubmit" %></div>
 
   <% if devise_mapping.rememberable? -%>
-    <div id = "signinremember"><%= f.check_box :remember_me, :class => "signincheck" %> <div id = "signinrest"><%= f.label "Keep me logged in" %>   <%= render "devise/shared/customlinks" %></div></div>
+    <div id = "signinremember"><%= f.check_box :remember_me, :class => "signincheck" %> <div id = "signinrest"><%= f.label "Keep me logged in" %>       <%= render "users/shared/customlinks" %></div></div>
   <% end -%>
 
 <% end %>
+-->
     </div>
   </div>
 </div>
@@ -80,5 +83,30 @@
 <script type = "text/javascript">
 
 </script>
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Log in</h3>
+  </div>
+  <div class="modal-body">
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+<div id = "modallog">
+  Email
+  <%= f.email_field :email, :id => "email", :autofocus => true %>
+  Password
+  <%= f.password_field :password, :id => "pw" %>
+</div>
+<div id = "rdlines">
+  <% if devise_mapping.rememberable? -%>
+    <%= f.check_box :remember_me, :id => "cb" %> <%= f.label "Keep me logged in" %> <%= render "users/shared/customlinks" %></div>    
+  <% end -%>
+</div>
+
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <%= f.submit "Log in", :class => "rdsubmit" %>  
+  </div>
+</div>
+<% end %>
 </body>
 </html>

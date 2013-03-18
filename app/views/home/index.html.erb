@@ -5,7 +5,9 @@
 <% User.all.each {|s| s.avatar.reprocess! } %>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <%= flash.each do |name, msg| %>
+          <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+<% end %>
   
   <div>
   <%= f.email_field :email, :placeholder => "Your email", :autofocus => true %></div>
@@ -24,5 +26,5 @@
 
   <div><%= f.submit "Sign up for free!", :class => 'signupsubmit' %></div>
 
-  <div id = "articles"><a style = "float:left">Terms of Service</a><a style = "margin-left:25px">Privacy</a><a style = "float:right">Security</a></div>
+  <div id = "articles"><a style = "float:left">Terms of Service</a><a style = "margin-left:40px">Privacy</a><a style = "float:right">Security</a></div>
 <% end %>

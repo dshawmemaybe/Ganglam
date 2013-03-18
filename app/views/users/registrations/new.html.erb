@@ -1,24 +1,25 @@
-<h2>Sign up</h2>
+<h1> Sign Up </h1>
+<br />
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
   
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <div>
+  <%= f.email_field :email, :placeholder => "Your email", :autofocus => true %></div>
 
-  <div><%= f.label :firstname %><br />
-  <%= f.text_field :firstname %></div>
+  <div id = "signupnames">
+  <%= f.text_field :firstname, :placeholder => "First name" %>
+  <%= f.text_field :lastname, :placeholder => "Last name" %></div>
 
-  <div><%= f.label :lastname %><br />
-  <%= f.text_field :lastname %></div>
+  <div>
+  <%= f.password_field :password, :placeholder => "Create a password" %></div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+  <div id = "signupterms"> By clicking on "Sign up for free!" below, you agree to our
+    <a>Terms of Service</a> and our <a>Privacy Policy</a>.
+  </div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
 
-  <div><%= f.submit "Sign up" %></div>
+  <div><%= f.submit "Sign up for free!", :class => 'signupsubmit' %></div>
+
+  <div id = "articles"><a style = "float:left">Terms of Service</a><a style = "margin-left:40px">Privacy</a><a style = "float:right">Security</a></div>
 <% end %>
-
-<%= render "devise/shared/links" %>

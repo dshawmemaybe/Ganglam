@@ -28,7 +28,7 @@ usersandgroups.push("User: " + user.firstname + " " + user.lastname)}
    
 		<div id = "logintop">
       <a id = "loginlink" href = "#">
-      <% lol = User.where(:userid => "user8").first 
+      <% lol = User.where(:email => "dannylshaw@yahoo.com").first 
       if !current_user.nil?
         lol = current_user
       end  %>
@@ -54,7 +54,7 @@ usersandgroups.push("User: " + user.firstname + " " + user.lastname)}
       <a class = "settingsbut home" data-placement = "bottom" href = "/" data-toggle = "tooltip" title data-original-title = "Home"><i class="icon-home icon-2x"></i></a>
       <!--
   <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown"  href="#">-->
-  <a class = "settingspop" data-toggle = "tooltip"  data-placement="bottom" data-toggle = "popover" data-content = "<ul id = 'setdropdown'><a><li>Schedule Settings</li><a href = '/users/sign_out' data-method = 'delete'><li>Log Out</li></a><li id = 'setmenudivide'></li><a><li>Help</li></a></ul>"><i class="icon-cogs icon-2x"></i></a>
+  <a class = "settingspop" data-toggle = "tooltip"  data-placement="bottom" data-toggle = "popover" data-content = "<ul id = 'setdropdown'><a><li>Schedule Settings</li><a href = '/users/logout' data-method = 'delete'><li>Log Out</li></a><li id = 'setmenudivide'></li><a><li>Help</li></a></ul>"><i class="icon-cogs icon-2x"></i></a>
    <!--</a>
   <ul class="settingsdropdown-menu" role="menu" aria-labelledby="dLabel">
    <li><a tabindex="-1" href="#">Logout</a></li>
@@ -116,7 +116,13 @@ usersandgroups.push("User: " + user.firstname + " " + user.lastname)}
         <ul class = "usersidebar">
         <% User.sort(:firstname).each { |user| %>
            <li> 
-            <%= link_to(User.where(:userid => user.userid).first) do %><h3><%= user.firstname + " " + user.lastname %></h3><h6><%=user.userid %></h6><% end %><input type = "checkbox" class = "usersidebarcheck">
+            <%= link_to(User.where(:email => user.email).first) do %><h3><%= user.firstname + " " + user.lastname %></h3>
+            <%  small = "."  
+              if !user.userid.nil?   
+                small = user.userid   
+              else   
+              end %>
+            <h6><%= small %></h6><% end %><input type = "checkbox" class = "usersidebarcheck">
             </li> 
           <% } %>
         </ul>

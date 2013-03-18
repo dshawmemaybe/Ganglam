@@ -7,11 +7,11 @@ class User
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :lockable
 
-	attr_accessible :email, :password, :password_confirmation, :firstname, :lastname
+	attr_accessible :userid, :email, :password, :password_confirmation, :firstname, :lastname, :avatar
 
-	key :userid, String
+	key :userid, String, :default => nil
 	key :firstname, String
 	key :lastname, String
 	key :email, String
@@ -21,6 +21,9 @@ class User
 	key :sign_in_count, Integer
 	key :password, String
 	key :group_ids, Array
+	key :failed_attempts, Integer
+	key :unlock_token, String
+	key :locked_at, Time
 	key :encrypted_password, String
 	key :current_sign_in_at, Time
 	key :last_sign_in_at, Time
@@ -33,7 +36,7 @@ class User
 	one :schedule
 	many :groups, :in => :group_ids
 
-	has_attached_file :avatar, :styles => {:thumb => "35x35#"}
+	has_attached_file :avatar, :styles => {:thumb => "35x35#"}, :url => ":rails_root/app/assets/images/:id/:style/:basename.:extension", :path => ":rails_root/app/assets/images/:id/:style/:basename.:extension"
 
 	key :avatar_file_name, String
 end
