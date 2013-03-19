@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>schedquarters</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id = "top">
+  <div id = "header_inner">
+    <a href = "/"><div id = "logo"></div></a>  
+    
+  </div>
+</div>
+<div id = "maincontainer">
+  <div id = "content">
+    <div id = "rdloginholder">
+      <div id = "rdlogin">
+      <%= yield %>
+      </div>
+     </div> 
+    
+  </div>
+</div>
+<div id = "footer">
+</div>
+<script type = "text/javascript">
+
+</script>
+</body>
+</html>

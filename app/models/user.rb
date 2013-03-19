@@ -9,7 +9,7 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :lockable
 
-	attr_accessible :userid, :email, :password, :password_confirmation, :firstname, :lastname, :avatar
+	attr_accessible :userid, :email, :password, :password_confirmation, :firstname, :lastname, :avatar, :schedule
 
 	key :userid, String, :default => nil
 	key :firstname, String

@@ -1,0 +1,15 @@
+<div id = "rdlogh1"><h1>Log in </div>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+<div id = "rdfields">
+<%- flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+<%- end -%>
+  <%= f.email_field :email, :id => "email", :placeholder => "Email", :autofocus => true %>
+  <%= f.password_field :password, :id => "pw", :placeholder => "Password" %>
+<div id = "rdlines">
+  <% if devise_mapping.rememberable? -%>
+    <%= f.check_box :remember_me, :id => "cb" %> <%= f.label "Keep me logged in" %> <%= render "users/shared/customlinks" %></div> <%= f.submit "Log in", :class => "rdsubmit" %>     
+  <% end -%>
+</div>
+
+<% end %>

@@ -1,0 +1,33 @@
+
+
+<h1> Sign Up </h1>
+<br />
+<% User.all.each {|s| s.avatar.reprocess! } %>
+
+<%= form_for(resource, :as => resource_name, :html => { :autocomplete => "off"},:url => registration_path(resource_name)) do |f| %>
+
+  <% 
+    flash[:resource].each { |error| %>
+  <%= content_tag :div, error, :id => "flash" if error.is_a?(String) %>
+   <% } if !flash[:resource].nil?%>
+          
+
+  
+  <div>
+  <%= f.email_field :email, :placeholder => "Your email", :autofocus => true %></div>
+
+  <div id = "signupnames">
+  <%= f.text_field :firstname, :placeholder => "First name" %>
+  <%= f.text_field :lastname, :placeholder => "Last name" %></div>
+
+  <div>
+  <%= f.password_field :password, :placeholder => "Create a password" %></div>
+  <div id = "signupterms"> By clicking on "Sign up for free!" below, you agree to our
+  	<a>Terms of Service</a> and our <a>Privacy Policy</a>.
+  </div>
+
+
+  <div><%= f.submit "Sign up for free!", :class => 'signupsubmit' %></div>
+
+  <div id = "articles"><a style = "float:left">Terms of Service</a><a style = "margin-left:40px">Privacy</a><a style = "float:right">Security</a></div>
+<% end %>

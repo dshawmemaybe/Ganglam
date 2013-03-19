@@ -340,12 +340,12 @@ ul.usersidebar{
 }
 
 ul.usersidebar li {
-	border-bottom: 1px solid black;
 	padding-left:2em;
 	padding-top:3px;
 	padding-bottom:3px;
 	max-height: 33px;
-	border-radius: 3px;
+	border-radius: 5px;
+	border-bottom: 2px solid black;
 }
 
 
@@ -383,8 +383,8 @@ ul.groupsidebar li, ul.hqsidebar li, ul.displaysidebar li, ul.functionsidebar li
 	padding-top:3px;
 	padding-bottom:3px;
 	max-height: 33px;
-	border-radius: 3px;
-	border-bottom: 1px solid black;
+	border-radius: 5px;
+	border-bottom: 2px solid black;
 }
 
 
@@ -522,6 +522,7 @@ select {
 	vertical-align: top;
 	line-height: 50px;
 	max-width: 40px;
+	margin-right: 10px;
 }
 
 #userimage img {
@@ -651,6 +652,8 @@ ul#setdropdown li#setmenudivide {
 
 #signupparameters {
 	width:310px;
+	height:510px;
+	position: relative;
 	margin: 50px 40px 10px 31px;
 }
 
@@ -889,7 +892,8 @@ input#user_remember_me.signincheck {
 }
 
 #articles {
-	margin-top: 170px;
+	position: absolute;
+	bottom:0;
 	width:285px;
 	text-align: left;
 }
@@ -1025,4 +1029,10 @@ input#user_remember_me.signincheck {
 .modal {
 	width:400px !important;
 	margin-left: -190px !important;
+}
+
+#flash {
+	color:red;	
+	font-weight: bold;
+	margin-bottom: 10px;
 }
