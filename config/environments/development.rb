@@ -37,4 +37,8 @@ RailsinstallerDemo::Application.configure do
   config.assets.debug = true
 
   Paperclip.options[:command_path] = 'C:/Program Files/ImageMagick-6.8.3-Q16/'
-end
+
+  config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_credentials => S3_CREDENTIALS
+}
