@@ -36,7 +36,7 @@ class User
 	one :schedule
 	many :groups, :in => :group_ids
 
-	has_attached_file :avatar, :styles => {:thumb => "35x35#"}, :url => ":rails_root/app/assets/images/:id/:style/:basename.:extension", :path => ":rails_root/app/assets/images/:id/:style/:basename.:extension"
+	has_attached_file :avatar, :styles => {:thumb => "35x35#"}
 
 	key :avatar_file_name, String
 end
