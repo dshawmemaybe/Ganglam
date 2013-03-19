@@ -529,7 +529,7 @@ select {
 	vertical-align: middle;
 	border-radius:3px;
 	min-height: 30px;
-	min-width:30px;
+	max-width:35px;
 	margin-bottom: 5px;
 	-webkit-box-shadow: 0 2px 3px 1px rgba(0,0,0,.25);
 	-moz-box-shadow: 0 2px 3px 1px rgba(0,0,0,.25);
