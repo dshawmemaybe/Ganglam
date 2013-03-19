@@ -9,4 +9,4 @@ test:
   database: "#myapp-development"
 
 production:
-  uri: ENV['MONGOHQ_URL']
+  uri: <%= ENV['MONGOHQ_URL'] %>
