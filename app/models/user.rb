@@ -36,7 +36,7 @@ class User
 	one :schedule
 	many :groups, :in => :group_ids
 
-	has_attached_file :avatar, :styles => {:thumb => "35x35#"}
+	has_attached_file :avatar, :styles => {:thumb => "35x35#"}, :s3_credentials => S3_CREDENTIAL
 
 	key :avatar_file_name, String
 end
