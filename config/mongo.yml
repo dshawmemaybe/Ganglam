@@ -1,0 +1,12 @@
+development:
+  adapter: MongoDB
+  host: localhost
+  database: "#myapp-development"
+
+test:
+  adapter: MongoDB
+  host: localhost
+  database: "#myapp-development"
+
+production:
+  uri: ENV['MONGOHQ_URL']
