@@ -8,6 +8,9 @@
   <b>Courses:</b>
   <%= @schedule.courses %>
 </p>
+<p>
+	<%= link_to 'Add Course', new_course_path %>
+</p>
 
 
 <%= link_to 'Edit', edit_schedule_path(@schedule) %> |

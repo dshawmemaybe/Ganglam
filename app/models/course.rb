@@ -9,5 +9,5 @@ class Course
 	key :day, Array
 	key :time, Array
 
-	belongs_to :Schedule
+	embedded_in :user
 end

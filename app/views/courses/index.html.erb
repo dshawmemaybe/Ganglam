@@ -1,4 +1,4 @@
-<h1>Listing courses</h1>
+<h1>Listing courses for <%= current_user.userid %></h1>
 
 <table>
   <tr>
@@ -14,7 +14,7 @@
     <th></th>
   </tr>
 
-<% @courses.each do |course| %>
+<% @courses.each_with_index do |course,i| %>
   <tr>
     <td><%= course.name %></td>
     <td><%= course.section %></td>
@@ -25,7 +25,7 @@
     <td><%= course.time %></td>
     <td><%= link_to 'Show', course %></td>
     <td><%= link_to 'Edit', edit_course_path(course) %></td>
-    <td><%= link_to 'Destroy', course, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Destroy', "/courses/" + i.to_s , confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

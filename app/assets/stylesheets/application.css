@@ -361,7 +361,6 @@ ul.usersidebar li {
 	padding-top:3px;
 	padding-bottom:3px;
 	max-height: 33px;
-	border-radius: 5px;
 	border-bottom: 2px solid black;
 }
 
@@ -400,7 +399,6 @@ ul.groupsidebar li, ul.hqsidebar li, ul.displaysidebar li, ul.functionsidebar li
 	padding-top:3px;
 	padding-bottom:3px;
 	max-height: 33px;
-	border-radius: 5px;
 	border-bottom: 2px solid black;
 }
 

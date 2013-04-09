@@ -1,8 +1,12 @@
 class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
+  def getUserSchedule()
+    return current_user.schedule
+  end  
+
   def index
-    @courses = Course.all
+    @courses = getUserSchedule().courses
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,10 +17,10 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-    @course = Course.find(params[:id])
+    @course = getUserSchedule().courses[params[:id].to_i]
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # show.html.format
       format.json { render json: @course }
     end
   end
@@ -34,17 +38,17 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
-    @course = Course.find(params[:id])
+    @course = getUserSchedule().courses[params[:id].to_i]
   end
 
   # POST /courses
   # POST /courses.json
   def create
     @course = Course.new(params[:course])
-
+    getUserSchedule().courses.push(@course)
     respond_to do |format|
       if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
+        format.html { redirect_to getUserSchedule(), notice: 'Course was successfully created.' }
         format.json { render json: @course, status: :created, location: @course }
       else
         format.html { render action: "new" }
@@ -56,11 +60,12 @@ class CoursesController < ApplicationController
   # PUT /courses/1
   # PUT /courses/1.json
   def update
-    @course = Course.find(params[:id])
+    index = params[:id]
+    @course = getUserSchedule().courses[params[:id].to_i]
 
     respond_to do |format|
-      if @course.update_attributes(params[:course])
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
+      if true
+        format.html { redirect_to getUserSchedule(), notice: 'Course was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -72,8 +77,8 @@ class CoursesController < ApplicationController
   # DELETE /courses/1
   # DELETE /courses/1.json
   def destroy
-    @course = Course.find(params[:id])
-    @course.destroy
+    getUserSchedule().courses.delete_at((params[:id].to_i))
+    current_user.save
 
     respond_to do |format|
       format.html { redirect_to courses_url }

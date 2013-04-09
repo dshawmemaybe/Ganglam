@@ -14,7 +14,11 @@ RailsinstallerDemo::Application.routes.draw do
     end
   end
 
-  resources :courses
+  resources :courses do
+    collection do
+      get 'removeit'
+    end
+  end
 
   resources :tasks
 
