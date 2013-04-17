@@ -1,0 +1,48 @@
+<%= current_user.groups %>
+<% event = Event.new("CMSC420",["tuesday"],["9:30"],["10:45"]) %>
+<%= event.to_s %>
+<br />
+<%= firsteventstart = Chronic.parse("this week's tuesday at " + event.starts[0]).to_s.sub(/-0400/, "") %>
+<br />
+<%= firsteventend= Chronic.parse("this week's tuesday at " + event.ends[0]).to_s.sub(/-0400/, "") %>
+
+<% event2 = Event.new("ECON200",["tuesday"],["9:30"],["11:50"]) %>
+<%= event.to_s %>
+<br />
+<%= firsteventstart2 = Chronic.parse("this week's tuesday at " + event2.starts[0]).to_s.sub(/-0400/, "") %>
+<br />
+<%= firsteventend2= Chronic.parse("this week's tuesday at " + event2.ends[0]).to_s.sub(/-0400/, "") %>
+
+<div id='calendar'></div>
+
+<script>
+$(document).ready(function() {
+
+    // page is now ready, initialize the calendar...
+
+    $('#calendar').fullCalendar({
+    	defaultView: 'agendaWeek',
+    	minTime: 8,
+    	editable: true,
+        weekends: false,
+    	events: [
+    		{
+    			title: '<%= event.name %>',
+    			start: '<%= firsteventstart %>',
+    			end: '<%= firsteventend %>',
+    			allDay: false
+
+    		},
+    		{
+    			title: '<%= event2.name %>',
+    			start: '<%= firsteventstart2 %>',
+    			end: '<%= firsteventend2 %>',
+    			allDay: false
+
+    		}
+    	]
+        // put your options and callbacks here
+    })
+
+});
+</script>

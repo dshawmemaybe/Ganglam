@@ -339,7 +339,7 @@ a#dLabel:hover{
 #sidebar {
 	float:left;
 	position:relative;
-	width: 255px;
+	width: 200px;
 	z-index:8;
 	height:700px;
 	background-image: -webkit-linear-gradient(top, white, #e6e6e6);
@@ -382,7 +382,7 @@ ul.usersidebar h6{
 	line-height: 11px;
 	color:#3A4F48;
 	font-weight:400;
-	width:203px;
+	width:158px;
 }
 
 ul.usersidebar a{
@@ -410,7 +410,7 @@ ul.groupsidebar h3, ul.hqsidebar h3{
 	font-size:13px;
 	line-height: 13px;
 	color: #00AA72;
-	width:203px;
+	width:155px;
 }
 
 ul.groupsidebar a, ul.hqsidebar a, ul.displaysidebar a, ul.functionidebar a{
@@ -461,7 +461,7 @@ th{
 }
 
 #maincontentholder {
-	width:705px;
+	width:760px;
 	float:left;
 	background-color:#00AA72;
 	position:relative;
@@ -481,7 +481,7 @@ th{
 
 	height:700px;
 	margin: 0px 3px 0px 2px;
-	width:700px; 
+	width:755px; 
 	background-color:white;
 	-webkit-box-shadow: 2px 2px 3px rgba(0,0,0,.25);
 	-moz-box-shadow: 0px 2px 3px rgba(0,0,0,.25);

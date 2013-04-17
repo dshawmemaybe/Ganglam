@@ -25,19 +25,22 @@
   </div>
   <div class="field">
     <%= f.label :building %><br />
-    <%= f.text_field :building %>
+    <%= f.select :building, @course.building %>
   </div>
   <div class="field">
     <%= f.label :room %><br />
-    <%= f.text_field :room %>
+    <%= f.select :room, @course.room  %>
   </div>
   <div class="field">
     <%= f.label :day %><br />
-    <%= f.text_field :day %>
+    <%= f.select :day, @course.day %>
   </div>
+
+
   <div class="field">
     <%= f.label :time %><br />
-    <%= f.text_field :time %>
+    <%= f.select :time, @course.time %>
+  
   </div>
   <div class="actions">
     <%= f.submit %>

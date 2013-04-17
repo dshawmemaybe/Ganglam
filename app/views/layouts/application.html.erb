@@ -15,28 +15,27 @@
     <% 
 usersandgroups = []
 Group.all.each {|group| 
-usersandgroups.push("Group: " + group.groupid) 
+usersandgroups.push(group.groupid) 
 } 
 
 User.all.each {|user|
-usersandgroups.push("User: " + user.firstname + " " + user.lastname)}
+usersandgroups.push(user.firstname + " " + user.lastname)}
 %>
-		<div id = "searchbartop"><input type="text" placeholder = "Search for a group or user" data-provide="typeahead" id = "searchbar"  data-source= '<%= usersandgroups %>' />
+		<div id = "searchbartop">
+      <form id = "search" action = "/search" method = "get" autocomplete = "off">
+          <input type="text" placeholder = "Search for a group or user" data-provide="typeahead" id = "searchbar"  data-source= '<%= usersandgroups %>' />
+      </form>
 		</div>
 
 
    
 		<div id = "logintop">
       <a id = "loginlink" href = "#">
-      <% lol = User.where(:email => "dannylshaw@yahoo.com").first 
-      if !current_user.nil?
-        lol = current_user
-      end  %>
       <div id = "userimage">
-      <%= image_tag lol.avatar.url(:thumb) %>
+      <%= image_tag current_user.avatar.url(:thumb) %>
     </div>
       <div id  = "username">
-       <span> <%= lol.firstname + " " + lol.lastname %></span>
+       <span> <%= current_user.firstname + " " + current_user.lastname %></span>
       </div>
       </a>
       
@@ -50,7 +49,7 @@ usersandgroups.push("User: " + user.firstname + " " + user.lastname)}
     </div>
     -->
     <div class="settingsdropdown">
-      <a class = "settingsbut cal" data-placement = "bottom" data-toggle = "tooltip" title data-original-title = "My Schedule"><i class="icon-calendar icon-2x"></i></a>
+      <a class = "settingsbut cal" href = "/canvas" data-placement = "bottom" data-toggle = "tooltip" title data-original-title = "My Schedule"><i class="icon-calendar icon-2x"></i></a>
       <a class = "settingsbut home" data-placement = "bottom" href = "/" data-toggle = "tooltip" title data-original-title = "Home"><i class="icon-home icon-2x"></i></a>
       <!--
   <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown"  href="#">-->
@@ -90,13 +89,13 @@ usersandgroups.push("User: " + user.firstname + " " + user.lastname)}
   <div class="accordion-group">
     <div class="accordion-heading groups">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-        <i class="icon-group icon-large"></i><h2>Groups</h2>
+        <i class="icon-group icon-large"></i><h2><%= session[:group] %>Groups</h2>
       </a>
     </div>
     <div id="collapseTwo" class="accordion-body collapse">
       <div class="accordion-inner">
         <ul class = "groupsidebar">
-          <% Group.sort(:groupid).each { |group| %>
+          <% current_user.groups.sort.each { |group| %>
             <li> <%= link_to(Group.where(:groupid => group.groupid).first) do %><h3><%= group.groupid %></h3><% end %>
 
             </li>

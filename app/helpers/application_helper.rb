@@ -10,4 +10,5 @@ module ApplicationHelper
 
 	return b.html
 end
+
 end

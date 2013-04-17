@@ -31,6 +31,8 @@ RailsinstallerDemo::Application.routes.draw do
     end
   end
   
+  resources :search
+
   resources :welcome
 
   resources :schedules
@@ -49,7 +51,7 @@ RailsinstallerDemo::Application.routes.draw do
   get "welcome/index"
   get "welcome/start"
 
-  
+  match '/canvas' => 'canvas#canvas'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
