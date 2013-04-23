@@ -1,5 +1,14 @@
 RailsinstallerDemo::Application.routes.draw do
  
+  resources :testudos
+
+
+  resources :testudos
+
+
+  resources :projects
+
+
   devise_for :users, :path_names => { :sign_in => "login", :sign_out => "logout"}, :controllers => { :sessions => "sessions", :registrations => "registrations"}
   resources :headquarters
 
@@ -11,12 +20,19 @@ RailsinstallerDemo::Application.routes.draw do
   resources :groups do
     member do
       put :removeuser
+      put :adduser
     end
   end
 
+  resources :testudos
+  
   resources :courses do
     collection do
       get 'removeit'
+      put :addcourse
+    end
+    member do
+      put :addcourse
     end
   end
 

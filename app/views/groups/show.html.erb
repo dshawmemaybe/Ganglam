@@ -13,6 +13,17 @@
   <% } %>
   </ul>
 </p>
+<%= form_for @group, :url => { :action => :adduser } do |f| %>
+  <%= text_field_tag :user %>
+<% end %>
+<!--
+<%= form_tag(:action => :adduser, :user => "lol" ) do %>
+        <%= text_field_tag :useradd, nil, :placeholder => "Enter a user's email or userid", :autocomplete => "off" %> 
+        <% end %>
+      -->
+        <br />
+<br />
+<br />
 <p>
   <b>Public:</b>
   <%= @group.public %>

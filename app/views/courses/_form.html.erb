@@ -1,3 +1,18 @@
+<% 
+classes= []
+Testudo.all.each {|testudo| 
+classes.push(testudo.classid.to_s + " Section:" + testudo.section.to_s)
+} 
+
+%>
+
+<%= form_for @course do |f| %>
+        <%= text_field_tag :coursetoadd, nil, :placeholder => "Search for a class", :autocomplete => "off", :data => { :provide=>"typeahead", :source=> classes} %> 
+        <% end %>
+<br />
+<br />
+<br />
+<!--
 <%= form_for(@course) do |f| %>
   <% if @course.errors.any? %>
     <div id="error_explanation">
@@ -37,12 +52,10 @@
   </div>
 
 
-  <div class="field">
-    <%= f.label :time %><br />
-    <%= f.select :time, @course.time %>
   
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+-->

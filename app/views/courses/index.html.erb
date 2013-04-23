@@ -8,7 +8,8 @@
     <th>Building</th>
     <th>Room</th>
     <th>Day</th>
-    <th>Time</th>
+    <th>Start Times</th>
+    <th>End Times</th>
     <th></th>
     <th></th>
     <th></th>
@@ -22,9 +23,10 @@
     <td><%= course.building %></td>
     <td><%= course.room %></td>
     <td><%= course.day %></td>
-    <td><%= course.time %></td>
-    <td><%= link_to 'Show', course %></td>
-    <td><%= link_to 'Edit', edit_course_path(course) %></td>
+    <td><%= course.starttime %></td>
+    <td><%= course.endtime %></td>
+    <td><%= link_to 'Show', "/courses/" + i.to_s %></td>
+    <td><%= link_to 'Edit', "/courses/" + i.to_s + "/edit"%></td>
     <td><%= link_to 'Destroy', "/courses/" + i.to_s , confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
@@ -33,3 +35,5 @@
 <br />
 
 <%= link_to 'New Course', new_course_path %>
+<br/>
+<br />

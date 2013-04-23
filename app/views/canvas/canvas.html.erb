@@ -1,19 +1,157 @@
-<%= current_user.groups %>
-<% event = Event.new("CMSC420",["tuesday"],["9:30"],["10:45"]) %>
-<%= event.to_s %>
-<br />
-<%= firsteventstart = Chronic.parse("this week's tuesday at " + event.starts[0]).to_s.sub(/-0400/, "") %>
-<br />
-<%= firsteventend= Chronic.parse("this week's tuesday at " + event.ends[0]).to_s.sub(/-0400/, "") %>
+<% def parseDate(day)
+        if (day == "M")
+            return "monday"
+        elsif (day == "Tu")
+            return "tuesday"
+        elsif (day == "W")
+            return "wednesday"
+        elsif (day == "Th")
+            return "thursday"
+        else 
+            return "friday"     
+        end
+    end
+%>
 
-<% event2 = Event.new("ECON200",["tuesday"],["9:30"],["11:50"]) %>
-<%= event.to_s %>
+<% event = Event.new("CMSC433",["M"],["14:00"],["15:15"]) %>
+<% event.to_s %>
 <br />
-<%= firsteventstart2 = Chronic.parse("this week's tuesday at " + event2.starts[0]).to_s.sub(/-0400/, "") %>
+<% firsteventstart = Chronic.parse("this week's " + parseDate(event.days[0].to_s) + " at " + event.starts[0]).to_s.sub(/-0400/, "") %>
 <br />
-<%= firsteventend2= Chronic.parse("this week's tuesday at " + event2.ends[0]).to_s.sub(/-0400/, "") %>
+<% firsteventend= Chronic.parse("this week's " + parseDate(event.days[0].to_s) + " at
+ " + event.ends[0]).to_s.sub(/-0400/, "") %>
 
-<div id='calendar'></div>
+<% event2 = Event.new("CMSC433",["W"],["14:00"],["15:15"]) %>
+<% event.to_s %>
+<br />
+<% firsteventstart2 = Chronic.parse("this week's " + parseDate(event2.days[0].to_s) + " at " + event2.starts[0]).to_s.sub(/-0400/, "") %>
+<br />
+<% firsteventend2 = Chronic.parse("this week's " + parseDate(event2.days[0].to_s) + " at
+ " + event2.ends[0]).to_s.sub(/-0400/, "") %>
+
+<% event3 = Event.new("ASTR100",["Tu"],["9:30"],["10:45"]) %>
+
+<% firsteventstart3 = Chronic.parse("this week's " + parseDate(event3.days[0].to_s) + " at " + event3.starts[0]).to_s.sub(/-0400/, "") %>
+<% firsteventend3 = Chronic.parse("this week's " + parseDate(event3.days[0].to_s) + " at
+ " + event3.ends[0]).to_s.sub(/-0400/, "") %>
+
+<% event4 = Event.new("ASTR100",["Th"],["9:30"],["10:45"]) %>
+
+<% firsteventstart4 = Chronic.parse("this week's " + parseDate(event4.days[0].to_s) + " at " + event4.starts[0]).to_s.sub(/-0400/, "") %>
+<% firsteventend4 = Chronic.parse("this week's " + parseDate(event4.days[0].to_s) + " at
+ " + event4.ends[0]).to_s.sub(/-0400/, "") %>
+
+<% event5 = Event.new("ASTR100",["F"],["10:00"],["10:50"]) %>
+
+<% firsteventstart5 = Chronic.parse("this week's " + parseDate(event5.days[0].to_s) + " at " + event5.starts[0]).to_s.sub(/-0400/, "") %>
+<% firsteventend5 = Chronic.parse("this week's " + parseDate(event5.days[0].to_s) + " at
+ " + event5.ends[0]).to_s.sub(/-0400/, "") %>
+
+<% event6 = Event.new("AMSC662",["Tu"],["12:30"],["13:45"]) %>
+
+<% firsteventstart6 = Chronic.parse("this week's " + parseDate(event6.days[0].to_s) + " at " + event6.starts[0]).to_s.sub(/-0400/, "") %>
+<% firsteventend6 = Chronic.parse("this week's " + parseDate(event6.days[0].to_s) + " at
+ " + event6.ends[0]).to_s.sub(/-0400/, "") %>
+
+<% event7 = Event.new("AMSC662",["Th"],["12:30"],["13:45"]) %>
+
+<% firsteventstart7 = Chronic.parse("this week's " + parseDate(event7.days[0].to_s) + " at " + event7.starts[0]).to_s.sub(/-0400/, "") %>
+<% firsteventend7 = Chronic.parse("this week's " + parseDate(event7.days[0].to_s) + " at
+ " + event7.ends[0]).to_s.sub(/-0400/, "") %>
+
+<% event8 = Event.new("ARAB104",["M"],["12:00"],["13:50"]) %>
+
+<% firsteventstart8 = Chronic.parse("this week's " + parseDate(event8.days[0].to_s) + " at " + event8.starts[0]).to_s.sub(/-0400/, "") %>
+<% firsteventend8 = Chronic.parse("this week's " + parseDate(event8.days[0].to_s) + " at
+ " + event8.ends[0]).to_s.sub(/-0400/, "") %>
+
+<% event9 = Event.new("ARAB104",["W"],["12:00"],["13:50"]) %>
+
+<% firsteventstart9 = Chronic.parse("this week's " + parseDate(event9.days[0].to_s) + " at " + event9.starts[0]).to_s.sub(/-0400/, "") %>
+<% firsteventend9 = Chronic.parse("this week's " + parseDate(event9.days[0].to_s) + " at
+ " + event9.ends[0]).to_s.sub(/-0400/, "") %>
+
+<% event10 = Event.new("ARAB104",["F"],["12:00"],["13:50"]) %>
+
+<% firsteventstart10 = Chronic.parse("this week's " + parseDate(event10.days[0].to_s) + " at " + event10.starts[0]).to_s.sub(/-0400/, "") %>
+<% firsteventend10 = Chronic.parse("this week's " + parseDate(event10.days[0].to_s) + " at
+ " + event10.ends[0]).to_s.sub(/-0400/, "") %>
+
+<% event11 = Event.new("CMSC433",["M"],["14:00"],["15:15"]) %>
+
+<% firsteventstart11 = Chronic.parse("this week's " + parseDate(event11.days[0].to_s) + " at " + event11.starts[0]).to_s.sub(/-0400/, "") %>
+
+<% firsteventend11= Chronic.parse("this week's " + parseDate(event11.days[0].to_s) + " at
+ " + event11.ends[0]).to_s.sub(/-0400/, "") %>
+
+<% event12 = Event.new("CMSC433",["W"],["14:00"],["15:15"]) %>
+
+<% firsteventstart12 = Chronic.parse("this week's " + parseDate(event12.days[0].to_s) + " at " + event12.starts[0]).to_s.sub(/-0400/, "") %>
+
+<% firsteventend12= Chronic.parse("this week's " + parseDate(event12.days[0].to_s) + " at
+ " + event12.ends[0]).to_s.sub(/-0400/, "") %>
+
+
+<% event13 = Event.new("CMSC424",["Tu"],["11:00"],["12:15"]) %>
+
+<% firsteventstart13 = Chronic.parse("this week's " + parseDate(event13.days[0].to_s) + " at " + event13.starts[0]).to_s.sub(/-0400/, "") %>
+
+<% firsteventend13= Chronic.parse("this week's " + parseDate(event13.days[0].to_s) + " at
+ " + event13.ends[0]).to_s.sub(/-0400/, "") %>
+
+<% event14 = Event.new("CMSC424",["Th"],["11:00"],["12:15"]) %>
+
+<% firsteventstart14 = Chronic.parse("this week's " + parseDate(event14.days[0].to_s) + " at " + event14.starts[0]).to_s.sub(/-0400/, "") %>
+
+<% firsteventend14= Chronic.parse("this week's " + parseDate(event14.days[0].to_s) + " at
+ " + event14.ends[0]).to_s.sub(/-0400/, "") %>
+
+<% event15 = Event.new("ECON321",["Tu"],["12:30"],["13:45"]) %>
+
+<% firsteventstart15 = Chronic.parse("this week's " + parseDate(event15.days[0].to_s) + " at " + event15.starts[0]).to_s.sub(/-0400/, "") %>
+
+<% firsteventend15= Chronic.parse("this week's " + parseDate(event15.days[0].to_s) + " at
+ " + event15.ends[0]).to_s.sub(/-0400/, "") %>
+
+
+<% event16 = Event.new("ECON321",["Th"],["12:30"],["13:45"]) %>
+
+<% firsteventstart16 = Chronic.parse("this week's " + parseDate(event16.days[0].to_s) + " at " + event16.starts[0]).to_s.sub(/-0400/, "") %>
+
+<% firsteventend16= Chronic.parse("this week's " + parseDate(event16.days[0].to_s) + " at
+ " + event16.ends[0]).to_s.sub(/-0400/, "") %>
+
+
+<% event17 = Event.new("ENGL393H",["M"],["15:30"],["16:45"]) %>
+
+<% firsteventstart17 = Chronic.parse("this week's " + parseDate(event17.days[0].to_s) + " at " + event17.starts[0]).to_s.sub(/-0400/, "") %>
+
+<% firsteventend17= Chronic.parse("this week's " + parseDate(event17.days[0].to_s) + " at
+ " + event17.ends[0]).to_s.sub(/-0400/, "") %>
+
+<% event18 = Event.new("ENGL393H",["W"],["15:30"],["16:45"]) %>
+
+<%= firsteventstart18 = Chronic.parse("this week's " + parseDate(event18.days[0].to_s) + " at " + event18.starts[0]).to_s.sub(/-0400/, "") %>
+
+<%= firsteventend18= Chronic.parse("this week's " + parseDate(event18.days[0].to_s) + " at
+ " + event18.ends[0]).to_s.sub(/-0400/, "") %>
+
+ <% event19 = Event.new("Common",["W"],["8:00"],["11:45"]) %>
+
+<%= firsteventstart19 = Chronic.parse("this week's " + parseDate(event19.days[0].to_s) + " at " + event19.starts[0]).to_s.sub(/-0400/, "") %>
+
+<%= firsteventend19= Chronic.parse("this week's " + parseDate(event19.days[0].to_s) + " at
+ " + event19.ends[0]).to_s.sub(/-0400/, "") %>
+
+ <% event20 = Event.new("Common",["W"],["17:00"],["23:45"]) %>
+
+<%= firsteventstart20 = Chronic.parse("this week's " + parseDate(event20.days[0].to_s) + " at " + event20.starts[0]).to_s.sub(/-0400/, "") %>
+
+<%= firsteventend20= Chronic.parse("this week's " + parseDate(event20.days[0].to_s) + " at
+ " + event20.ends[0]).to_s.sub(/-0400/, "") %>
+<br />
+
+<div id='calendar'>
 
 <script>
 $(document).ready(function() {
@@ -25,6 +163,9 @@ $(document).ready(function() {
     	minTime: 8,
     	editable: true,
         weekends: false,
+        slotMinutes: 30,
+        snapMinutes: 15,
+        allDaySlot: false,
     	events: [
     		{
     			title: '<%= event.name %>',
@@ -39,7 +180,134 @@ $(document).ready(function() {
     			end: '<%= firsteventend2 %>',
     			allDay: false
 
-    		}
+    		},
+            {
+                title: '<%= event3.name %>',
+                start: '<%= firsteventstart3 %>',
+                end: '<%= firsteventend3 %>',
+                allDay: false
+
+            },
+            {
+                title: '<%= event4.name %>',
+                start: '<%= firsteventstart4 %>',
+                end: '<%= firsteventend4 %>',
+                allDay: false
+
+            },
+            {
+                title: '<%= event5.name %>',
+                start: '<%= firsteventstart5 %>',
+                end: '<%= firsteventend5 %>',
+                allDay: false
+
+            },
+            {
+                title: '<%= event6.name %>',
+                start: '<%= firsteventstart6 %>',
+                end: '<%= firsteventend6 %>',
+                allDay: false
+
+            },
+            {
+                title: '<%= event7.name %>',
+                start: '<%= firsteventstart7 %>',
+                end: '<%= firsteventend7 %>',
+                allDay: false
+
+            },
+            {
+                title: '<%= event8.name %>',
+                start: '<%= firsteventstart8 %>',
+                end: '<%= firsteventend8 %>',
+                allDay: false
+
+            },
+            {
+                title: '<%= event9.name %>',
+                start: '<%= firsteventstart9 %>',
+                end: '<%= firsteventend9 %>',
+                allDay: false
+
+            },
+            {
+                title: '<%= event10.name %>',
+                start: '<%= firsteventstart10 %>',
+                end: '<%= firsteventend10 %>',
+                allDay: false
+
+            },
+            {
+                title: '<%= event11.name %>',
+                start: '<%= firsteventstart11 %>',
+                end: '<%= firsteventend11 %>',
+                allDay: false,
+                color: "#FF7300"
+
+            },
+            {
+                title: '<%= event12.name %>',
+                start: '<%= firsteventstart12 %>',
+                end: '<%= firsteventend12 %>',
+                allDay: false,
+                color: "#FF7300"
+            },
+            {
+                title: '<%= event13.name %>',
+                start: '<%= firsteventstart13 %>',
+                end: '<%= firsteventend13 %>',
+                allDay: false,
+                color: "#FF7300"
+            },
+            {
+                title: '<%= event14.name %>',
+                start: '<%= firsteventstart14 %>',
+                end: '<%= firsteventend14 %>',
+                allDay: false,
+                color: "#FF7300"
+            },
+            {
+                title: '<%= event15.name %>',
+                start: '<%= firsteventstart15 %>',
+                end: '<%= firsteventend15 %>',
+                allDay: false,
+                color: "#FF7300"
+            },
+            {
+                title: '<%= event16.name %>',
+                start: '<%= firsteventstart16 %>',
+                end: '<%= firsteventend16 %>',
+                allDay: false,
+                color: "#FF7300"
+            },
+            {
+                title: '<%= event17.name %>',
+                start: '<%= firsteventstart17 %>',
+                end: '<%= firsteventend17 %>',
+                allDay: false,
+                color: "#FF7300"
+            },
+            {
+                title: '<%= event18.name %>',
+                start: '<%= firsteventstart18 %>',
+                end: '<%= firsteventend18 %>',
+                allDay: false,
+                color: "#FF7300"
+            },
+            {
+                title: '<%= event17.name %>',
+                start: '<%= firsteventstart17 %>',
+                end: '<%= firsteventend17 %>',
+                allDay: false,
+                color: "#FF7300"
+            },
+            {
+                title: '<%= event18.name %>',
+                start: '<%= firsteventstart18 %>',
+                end: '<%= firsteventend18 %>',
+                allDay: false,
+                color: "#FF7300"
+            }
     	]
         // put your options and callbacks here
     })

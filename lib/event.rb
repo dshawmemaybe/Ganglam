@@ -12,4 +12,18 @@ class Event
 		return name.to_s + ", " + days.to_s + ", " + starts.to_s + ", " + ends.to_s
 	end
 
+	def parseDate(day)
+		if (day == "M")
+			return "monday"
+		elsif (day == "Tu")
+			return "tuesday"
+		elsif (day == "W")
+			return "wednesday"
+		elsif (day == "Th")
+			return "thursday"
+		else 
+			return "friday"		
+		end
+	end
+
 end

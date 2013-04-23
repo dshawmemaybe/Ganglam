@@ -12,7 +12,12 @@ class SearchController < ActionController::Base
     end 
 
     def index 
-      
+      @search = params[:searchbar]
+
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @search }
+    end
     end
 
 end

@@ -349,6 +349,8 @@ a#dLabel:hover{
 	background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
 	overflow:auto;
+
+	text-overflow: ellipsis !important;
 }
 
 ul.usersidebar{
@@ -365,7 +367,17 @@ ul.usersidebar li {
 }
 
 
-ul.usersidebar h3 ,ul.displaysidebar h3, ul.functionsidebar h3{
+ul.usersidebar h3 {
+	left:5px;
+	margin:0;
+	padding:0;
+	font-size:13px;
+	line-height: 13px;
+	color: #3A4F48;
+	width:120px;
+}
+
+ul.displaysidebar h3, ul.functionsidebar h3, ul.displaysidebar h3, ul.functionsidebar h3{
 	left:5px;
 	margin:0;
 	padding:0;
@@ -382,14 +394,14 @@ ul.usersidebar h6{
 	line-height: 11px;
 	color:#3A4F48;
 	font-weight:400;
-	width:158px;
+	width:150px;
 }
 
 ul.usersidebar a{
 	display:inline-block;
 }
 
-ul.groupsidebar, ul.hqsidebar{
+ul.groupsidebar, ul.hqsidebar, ul.displaysidebar, ul.functionsidebar{
 	margin:0;
 	list-style: none;
 }
@@ -421,6 +433,7 @@ ul.groupsidebar a, ul.hqsidebar a, ul.displaysidebar a, ul.functionidebar a{
 
 .usersidebarcheck {
 	right:15px;
+	bottom:8px;
 	float:right;
 	 -webkit-appearance: none;
 	  background-color: #fafafa;
@@ -429,7 +442,7 @@ ul.groupsidebar a, ul.hqsidebar a, ul.displaysidebar a, ul.functionidebar a{
     padding: 9px;
     border-radius: 3px;
     display: inline-block;
-    position: absolute;
+    position: relative;
 }
 
 .usersidebarcheck:active, .usersidebarcheck:checked:active {

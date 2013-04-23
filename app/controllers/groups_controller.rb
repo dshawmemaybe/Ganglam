@@ -85,6 +85,25 @@ class GroupsController < ApplicationController
 
   # PUT /groups/1
   # PUT /groups/1.json
+  def adduser
+  @group = Group.find(params[:id])
+  @group.user_ids.push(params[:user])
+  @group.save
+
+  if params[:user].include? "@"
+     @user = User.where(:email => params[:user]).first
+  else
+     @user = User.where(:userid => params[:user]).first
+  end
+
+  if @user
+      @user.group_ids.push(params[:id])
+  end
+
+  @user.save
+    redirect_to @group
+  end
+
   def removeuser
     @group = Group.find(params[:id])
     @group.user_ids.delete(params[:user])

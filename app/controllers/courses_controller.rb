@@ -1,3 +1,4 @@
+require 'parsetestudo'
 class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
@@ -44,7 +45,19 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
-    @course = Course.new(params[:course])
+    courseName = params[:coursetoadd].split(" Section:")[0]
+    courseSection = params[:coursetoadd].split(" Section:")[1].to_i
+    courseparams = [courseName, courseSection]
+    testudoClass = Testudo.where(:classid => courseName, :section => courseSection).first
+    @course = Course.new
+    @course.name = testudoClass.classid
+    @course.section = testudoClass.section
+    @course.credits = testudoClass.credits
+    @course.building = testudoClass.building
+    @course.room = testudoClass.classroom
+    @course.day = testudoClass.sectiondays
+    @course.starttime = testudoClass.starttimes
+    @course.endtime = testudoClass.endtimes
     getUserSchedule().courses.push(@course)
     respond_to do |format|
       if @course.save
@@ -60,11 +73,11 @@ class CoursesController < ApplicationController
   # PUT /courses/1
   # PUT /courses/1.json
   def update
-    index = params[:id]
-    @course = getUserSchedule().courses[params[:id].to_i]
-
+    @course = Course.new(params[:course])
+    getUserSchedule().courses.push(@course)
+    getUserSchedule().courses.delete_at((params[:id].to_i))
     respond_to do |format|
-      if true
+      if @course.save
         format.html { redirect_to getUserSchedule(), notice: 'Course was successfully updated.' }
         format.json { head :no_content }
       else
@@ -85,4 +98,9 @@ class CoursesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def addcourse
+    redirect_to @course
+  end
+
 end

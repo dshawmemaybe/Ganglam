@@ -7,7 +7,8 @@ class Course
 	key :building, Array
 	key :room, Array
 	key :day, Array
-	key :time, Array
+	key :starttime, Array
+	key :endtime, Array
 
 	embedded_in :user
 end

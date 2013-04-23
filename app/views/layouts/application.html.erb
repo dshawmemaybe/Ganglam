@@ -22,23 +22,22 @@ User.all.each {|user|
 usersandgroups.push(user.firstname + " " + user.lastname)}
 %>
 		<div id = "searchbartop">
-      <form id = "search" action = "/search" method = "get" autocomplete = "off">
-          <input type="text" placeholder = "Search for a group or user" data-provide="typeahead" id = "searchbar"  data-source= '<%= usersandgroups %>' />
-      </form>
+      <%= form_tag("/search", :method => "get") do %>
+        <%= text_field_tag :searchbar, nil, :placeholder => "Search for a group or user", :autocomplete => "off", :data => { :provide=>"typeahead", :source=> usersandgroups} %> 
+        <% end %>
 		</div>
 
 
    
 		<div id = "logintop">
-      <a id = "loginlink" href = "#">
+      <%= link_to(User.where(:email => current_user.email).first, :id => "loginlink") do %>
       <div id = "userimage">
       <%= image_tag current_user.avatar.url(:thumb) %>
     </div>
       <div id  = "username">
        <span> <%= current_user.firstname + " " + current_user.lastname %></span>
       </div>
-      </a>
-      
+      <% end %>      
     </div>
     <!--
     <div id = "navcontainer">
@@ -89,7 +88,12 @@ usersandgroups.push(user.firstname + " " + user.lastname)}
   <div class="accordion-group">
     <div class="accordion-heading groups">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-        <i class="icon-group icon-large"></i><h2><%= session[:group] %>Groups</h2>
+        <i class="icon-group icon-large"></i><h2><% if session[:group].nil? then %>
+        Groups
+        <% else %>
+        <%= session[:group] %>
+        <% end %>
+        </h2>
       </a>
     </div>
     <div id="collapseTwo" class="accordion-body collapse">
@@ -121,7 +125,8 @@ usersandgroups.push(user.firstname + " " + user.lastname)}
                 small = user.userid   
               else   
               end %>
-            <h6><%= small %></h6><% end %><input type = "checkbox" class = "usersidebarcheck">
+              <input type = "checkbox" class = "usersidebarcheck">
+            <h6><%= small %></h6><% end %>
             </li> 
           <% } %>
         </ul>
@@ -136,17 +141,13 @@ usersandgroups.push(user.firstname + " " + user.lastname)}
     </div>
     <div id="collapseFour" class="accordion-body collapse">
       <div class="accordion-inner">
-        <ul class = "displaysidebar"><h3>
-        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
-        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
-        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
-        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
-        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
-        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
-        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
-        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
-        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
-        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf</h3>
+        <ul class = "displaysidebar">
+            <li><a><h3>Individual Scroll</h3></a></li>
+            <li><a><h3>Group Overlap</h3></a></li>
+            <li><a><h3>Daily</h3></a></li>
+            <li><a><h3>Weekly</h3></a></li>
+            <li><a><h3>Monthly</h3></a></li>
+        </h3>
       </ul>
       </div>
     </div>
@@ -159,17 +160,10 @@ usersandgroups.push(user.firstname + " " + user.lastname)}
     </div>
     <div id="collapseFive" class="accordion-body collapse">
       <div class="accordion-inner">
-        <ul class = "functionsidebar"><h3>
-        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
-        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
-        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
-        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
-        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
-        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
-        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
-        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
-        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf
-        Anim pariat Anim pbob adfadsf asdfasdf adfasdfdf  apraefpas adfadfan adjfkdf</h3>
+        <ul class = "functionsidebar">
+          <li><a><h3>Show Available Times</h3></a></li>
+          <li><a><h3>Add Event</h3></a></li>
+          <li><a><h3>Change Colors</h3></a></li>
       </ul>
       </div>
     </div>

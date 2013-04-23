@@ -1,0 +1,37 @@
+<h1>Listing testudos</h1>
+
+<table>
+  <tr>
+    <th>Classid</th>
+    <th>Section</th>
+    <th>Sectiondays</th>
+    <th>Starttimes</th>
+    <th>Endtimes</th>
+    <th>Building</th>
+    <th>Classroom</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @testudos.each do |testudo| %>
+  <tr>
+    <td><%= testudo.classid %></td>
+    <td><%= testudo.section %></td>
+    <td><%= testudo.sectiondays %></td>
+    <td><%= testudo.starttimes %></td>
+    <td><%= testudo.endtimes %></td>
+    <td><%= testudo.building %></td>
+    <td><%= testudo.classroom %></td>
+    <td><%= link_to 'Show', testudo %></td>
+    <td><%= link_to 'Edit', edit_testudo_path(testudo) %></td>
+    <td><%= link_to 'Destroy', testudo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Testudo', new_testudo_path %>
+<br />
+<br />
