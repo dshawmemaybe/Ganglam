@@ -1,0 +1,77 @@
+<div id = "canvastopbar">
+    <div id = "canvastop">
+        <div id = "canvasgroup">
+        </div>
+        <br />
+        <div id ="canvasuser">
+        </div>
+
+        <span class = "fc-button fc-state-default" id = "nextuser"> --> </span>
+    </div>
+</div>
+
+<div id='calendar'>
+
+<script>
+$(document).ready(function() {
+    var currentGroup = $("input[type='radio']:checked").prev().text();
+
+    // page is now ready, initialize the calendar...
+    $("#canvasgroup").html("Currently Selected Group: " + "<%= @group %>");
+
+    $("input[type='radio']").click(function() {
+        var currentGroup = $("input[type='radio']:checked").prev().text();
+        $("#canvasgroup").html("Currently Selected Group: " + currentGroup); 
+        $.ajax({
+            type: 'GET',
+            url: '/canvas',
+            data: {group : currentGroup},
+            success: function() {
+                window.location.reload(true);
+            }
+        });
+
+    });
+    $('#calendar').fullCalendar({
+        header: {left:'month agendaWeek agendaDay', center: 'title'},
+        minTime: 8,
+        editable: false,
+        slotMinutes: 30,
+        snapMinutes: 15,
+        allDaySlot: false,
+        eventSources: [
+
+        // your event source
+        {
+            url: '/canvas.json',
+            dataType: 'JSON',
+            data: {
+                group: "<%= @group %>",
+                next: false
+            },
+            error: function() {
+                alert('there was an error while fetching events!');
+            }
+        }
+
+        // any other sources...
+
+    ]           
+        // put your options and callbacks here
+    });
+   
+$("#nextuser").click(function() {
+    $('#calendar').fullCalendar('removeEventSource', {
+            url: '/canvas.json'
+        });
+$('#calendar').fullCalendar('addEventSource', {
+            url: '/canvas.json',
+            data: {
+                group: "<%= @group %>",
+                next: true
+            },
+            async:false
+        });
+});
+});
+</script>

@@ -10,6 +10,7 @@ gem "bson_ext"
 gem "font-awesome-rails"
 gem "aws-sdk"
 gem "chronic"
+gem 'gon'
 gem "watu_table_builder", :require => "table_builder"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

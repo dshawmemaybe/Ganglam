@@ -1,18 +1,3 @@
-<% def parseDate(day)
-        if (day == "M")
-            return "monday"
-        elsif (day == "Tu")
-            return "tuesday"
-        elsif (day == "W")
-            return "wednesday"
-        elsif (day == "Th")
-            return "thursday"
-        else 
-            return "friday"     
-        end
-    end
-%>
-
 <% event = Event.new("CMSC433",["M"],["14:00"],["15:15"]) %>
 <% event.to_s %>
 <br />

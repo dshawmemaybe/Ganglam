@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>schedquarters</title>
+  <%= include_gon %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -88,11 +89,8 @@ usersandgroups.push(user.firstname + " " + user.lastname)}
   <div class="accordion-group">
     <div class="accordion-heading groups">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-        <i class="icon-group icon-large"></i><h2><% if session[:group].nil? then %>
+        <i class="icon-group icon-large"></i><h2>
         Groups
-        <% else %>
-        <%= session[:group] %>
-        <% end %>
         </h2>
       </a>
     </div>
@@ -100,8 +98,8 @@ usersandgroups.push(user.firstname + " " + user.lastname)}
       <div class="accordion-inner">
         <ul class = "groupsidebar">
           <% current_user.groups.sort.each { |group| %>
-            <li> <%= link_to(Group.where(:groupid => group.groupid).first) do %><h3><%= group.groupid %></h3><% end %>
-
+            <li> <h3><%= link_to group.groupid, :controller => "canvas", :group => group.groupid, :next => true %></h3>
+                        <!--<input type = "radio" id = "<%= group.groupid %>" class = "groupsidebarradio">-->
             </li>
           <% } %>
         </ul>

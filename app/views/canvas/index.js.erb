@@ -1,0 +1,11 @@
+$('#calendar').fullCalendar('removeEventSource', {
+            url: '/canvas.json'
+        });
+$('#calendar').fullCalendar('addEventSource', {
+            url: '/canvas.json',
+            data: {
+                group: "<%= @group %>",
+                count: "<%= @count %>"
+            }
+        });
+$('#calendar').fullCalendar('refetchEvents');
