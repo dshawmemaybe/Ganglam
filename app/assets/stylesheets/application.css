@@ -406,12 +406,20 @@ ul.groupsidebar, ul.hqsidebar, ul.displaysidebar, ul.functionsidebar{
 	list-style: none;
 }
 
-ul.groupsidebar li, ul.hqsidebar li, ul.displaysidebar li, ul.functionsidebar li {
+ul.groupsidebar li, ul.hqsidebar li {
 	padding-left:2em;
 	padding-top:3px;
 	padding-bottom:3px;
 	max-height: 33px;
 	border-bottom: 2px solid black;
+}
+
+ul.displaysidebar li, ul.functionsidebar li {
+	padding-left:1em;
+	padding-top:3px;
+	padding-bottom:3px;
+	max-height: 33px;
+	border-bottom: 1px solid black;
 }
 
 
@@ -1102,4 +1110,25 @@ input#user_remember_me.signincheck {
 input[type="radio"].groupsidebarradio {
 	right: 20px;
 	position:absolute;
+}
+
+
+#freeTimeModal select, #freeTimeModal textarea {
+	width:70px;
+}
+
+#avalTime {
+	width:148px;
+}
+
+#avalTime h3 {
+	width:148px;
+}
+
+.btn.display, .btn.display h3 {
+	width:148px;
+}
+
+.btn.active h3 {
+	color: #00AA72 !important;
 }

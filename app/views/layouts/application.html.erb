@@ -98,7 +98,7 @@ usersandgroups.push(user.firstname + " " + user.lastname)}
       <div class="accordion-inner">
         <ul class = "groupsidebar">
           <% current_user.groups.sort.each { |group| %>
-            <li> <h3><%= link_to group.groupid, :controller => "canvas", :group => group.groupid, :next => true %></h3>
+            <li> <h3><%= link_to group.groupid, :controller => "canvas", :group => group.groupid, :next => false %></h3>
                         <!--<input type = "radio" id = "<%= group.groupid %>" class = "groupsidebarradio">-->
             </li>
           <% } %>
@@ -140,11 +140,11 @@ usersandgroups.push(user.firstname + " " + user.lastname)}
     <div id="collapseFour" class="accordion-body collapse">
       <div class="accordion-inner">
         <ul class = "displaysidebar">
-            <li><a><h3>Individual Scroll</h3></a></li>
-            <li><a><h3>Group Overlap</h3></a></li>
-            <li><a><h3>Daily</h3></a></li>
-            <li><a><h3>Weekly</h3></a></li>
-            <li><a><h3>Monthly</h3></a></li>
+            <li><a id = "individualscroll" class = "btn display active"><h3>Individual Scroll</h3></a></li>
+            <li><a id = "groupoverlay" class = "btn display"><h3>Group Overlap</h3></a></li>
+            <li><a id = "daily" class = "btn display"><h3>Daily</h3></a></li>
+            <li><a id = "weekly" class = "btn display active"><h3>Weekly</h3></a></li>
+            <li><a id = "monthly" class = "btn display"><h3>Monthly</h3></a></li>
         </h3>
       </ul>
       </div>
@@ -159,7 +159,8 @@ usersandgroups.push(user.firstname + " " + user.lastname)}
     <div id="collapseFive" class="accordion-body collapse">
       <div class="accordion-inner">
         <ul class = "functionsidebar">
-          <li><a><h3>Show Available Times</h3></a></li>
+          <li><a href = "#freeTimeModal" id = "avalTime" role="button" class="btn" data-toggle="modal">
+            <h3>Show Available Times</h3></a></li>
           <li><a><h3>Add Event</h3></a></li>
           <li><a><h3>Change Colors</h3></a></li>
       </ul>
@@ -176,6 +177,28 @@ usersandgroups.push(user.firstname + " " + user.lastname)}
 	</div>
 </div>
 <div id = "footer">
+</div>
+<div id="freeTimeModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Available Time</h3>
+  </div>
+  <div class="modal-body">
+    Select day: <select id = "selectFreeDay">
+      <option>M</option>
+      <option>Tu</option>
+      <option>W</option>
+      <option>Th</option>
+      <option>F</option>
+    </select>
+    <br />
+    Specify minimum-duration:
+    <textarea id = "freeDur" rows = "1" max-length = "4"></textarea> minutes
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary" id = "freetime" data-dismiss="modal">Find time!</button>
+  </div>
 </div>
 <script type = "text/javascript">
 

@@ -3,21 +3,26 @@
         <div id = "canvasgroup">
         </div>
         <br />
+
         <div id ="canvasuser">
         </div>
-
+        <span class = "fc-button fc-state-default" id = "backuser"> <-- </span>
         <span class = "fc-button fc-state-default" id = "nextuser"> --> </span>
     </div>
 </div>
+
 
 <div id='calendar'>
 
 <script>
 $(document).ready(function() {
-    var currentGroup = $("input[type='radio']:checked").prev().text();
+
+
 
     // page is now ready, initialize the calendar...
     $("#canvasgroup").html("Currently Selected Group: " + "<%= @group %>");
+    $("#canvasuser").html("Current User: " + "<%= @selecteduser.firstname + " " +  @selecteduser.lastname %>");
+  
 
     $("input[type='radio']").click(function() {
         var currentGroup = $("input[type='radio']:checked").prev().text();
@@ -35,10 +40,12 @@ $(document).ready(function() {
     $('#calendar').fullCalendar({
         header: {left:'month agendaWeek agendaDay', center: 'title'},
         minTime: 8,
+        defaultView: "agendaWeek",
         editable: false,
         slotMinutes: 30,
         snapMinutes: 15,
         allDaySlot: false,
+        weekends: true,
         eventSources: [
 
         // your event source
@@ -55,11 +62,28 @@ $(document).ready(function() {
         }
 
         // any other sources...
-
-    ]           
+    ]
+        
         // put your options and callbacks here
     });
    
+$("#backuser").click(function() {
+    $('#calendar').fullCalendar('removeEventSource', {
+            url: '/canvas.json'
+        });
+$('#calendar').fullCalendar('addEventSource', {
+            url: '/canvas.json',
+            data: {
+                group: "<%= @group %>",
+                next: "back"
+            },
+            async:false,
+            success: function(result) {
+                $("#canvasuser").html("Current User: " + result[0].name);
+            }
+        });
+});
+
 $("#nextuser").click(function() {
     $('#calendar').fullCalendar('removeEventSource', {
             url: '/canvas.json'
@@ -70,8 +94,91 @@ $('#calendar').fullCalendar('addEventSource', {
                 group: "<%= @group %>",
                 next: true
             },
+            async:false,
+            success: function(result) {
+                $("#canvasuser").html("Current User: " + result[0].name);
+            }
+        });
+});
+$("#individualscroll").click(function() {
+    if (!$(this).hasClass("active")){
+    $("#groupoverlay").removeClass("active");
+    $("#individualscroll").addClass("active");
+    $('#calendar').fullCalendar('removeEventSource', {
+            url: '/canvas.json'
+        });
+    $("#calendar").fullCalendar('addEventSource',
+        {
+            url: '/canvas.json',
+            dataType: 'JSON',
+            data: {
+                group: "<%= @group %>",
+                next: false
+            },
+            async:false,
+            success: function(result) {
+                $("#canvasuser").show();
+            }
+        });
+    }
+});
+
+$("#groupoverlay").click(function() {
+    if (!$(this).hasClass("active")){
+    $('#calendar').fullCalendar('removeEventSource', {
+            url: '/canvas.json'
+        });
+    $("#groupoverlay").addClass("active");
+    $("#individualscroll").removeClass("active");
+$('#calendar').fullCalendar('addEventSource', {
+            url: '/canvas.json',
+            data: {
+                group: "<%= @group %>",
+                next: false,
+                overlay: true
+            },
+            async:false,
+            success: function(result) {
+                $("#canvasuser").hide();
+            }
+        });
+}
+});
+
+$("#freetime").click(function() {
+    $('#calendar').fullCalendar('addEventSource', {
+            url: '/canvas.json',
+            data: {
+                group: "<%= @group %>",
+                next: false,
+                freetime: true,
+                day: $("#selectFreeDay option:selected").text(),
+                min: $("#freeDur").val()
+            },
             async:false
         });
 });
+
+$("#daily").click(function() {
+    $(".fc-button-agendaDay").click();
+    $("#daily").addClass("active");
+    $("#weekly").removeClass("active");
+    $("#monthly").removeClass("active");
+});
+
+$("#weekly").click(function() {
+    $(".fc-button-agendaWeek").click();
+    $("#daily").removeClass("active");
+    $("#weekly").addClass("active");
+    $("#monthly").removeClass("active");
+});
+
+$("#monthly").click(function() {
+    $(".fc-button-month").click();
+    $("#daily").removeClass("active");
+    $("#weekly").removeClass("active");
+    $("#monthly").addClass("active");
+});
+
 });
 </script>
