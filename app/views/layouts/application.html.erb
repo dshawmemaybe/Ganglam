@@ -12,6 +12,7 @@
 	<div id = "header_inner">
 		<a href = "/"><div id = "logo"></div></a>
     
+
     <% 
 usersandgroups = []
 Group.all.each {|group| 
@@ -96,7 +97,14 @@ usersandgroups.push(user.firstname + " " + user.lastname)}
     <div id="collapseTwo" class="accordion-body collapse">
       <div class="accordion-inner">
         <ul class = "groupsidebar">
-          <% current_user.groups.sort.each { |group| %>
+          <% current_user.groups.sort { |a,b|
+            if (a.groupid <= b.groupid)
+              -1
+            elsif (a.groupid > b.groupid) 
+              1
+            else 0
+            end
+          }.each { |group| %>
             <li> <h3><%= link_to group.groupid, :controller => "canvas", :group => group.groupid, :next => false %></h3>
                         <!--<input type = "radio" id = "<%= group.groupid %>" class = "groupsidebarradio">-->
             </li>

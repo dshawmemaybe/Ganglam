@@ -43,9 +43,7 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new(params[:group])
-    @group.user_ids.push(current_user.email)
-    current_user.group_ids.push(@group.id.to_s)
-    current_user.save
+  
     respond_to do |format|
       if @group.save
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
@@ -77,7 +75,9 @@ class GroupsController < ApplicationController
   # DELETE /groups/1.json
   def destroy
     @group = Group.find(params[:id])
+
     @group.destroy
+
 
     respond_to do |format|
       format.html { redirect_to groups_url }
