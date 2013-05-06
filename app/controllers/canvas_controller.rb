@@ -1,4 +1,5 @@
 require 'event'
+require 'stop'
 class CanvasController < ActionController::Base
   layout :user_layout
   $count = 0
@@ -13,7 +14,7 @@ class CanvasController < ActionController::Base
         separateDays(d).each { |x|
           if (x.to_s == day.to_s)
             events.push(Stop.new(tokenizeTime(c.starttime[i].to_s.sub(/-0400/, "")),"s"));
-        events.push(Stop.new(tokenizeTime(c.endtime[i].to_s.sub(/-0400/, "")),"e"));
+          events.push(Stop.new(tokenizeTime(c.endtime[i].to_s.sub(/-0400/, "")),"e"));
       end
         }
       }
@@ -46,6 +47,7 @@ class CanvasController < ActionController::Base
   end
 
   def findtime(events,day,min)
+    count = 0
     secheck = {}
     secheck["s"] = 1
     newevents = []
@@ -55,7 +57,9 @@ class CanvasController < ActionController::Base
             :end => Chronic.parse("this week's " + parseDate(day) + " at " + events[0].time), 
             :allDay => false,
             :color => "#00AA72",
-            :className => "freetime"})
+            :className => "freetime",
+            :id => "freetime" + count.to_s})
+    count += 1
     end
     newstart = ""
     for i in 1..(events.length - 1) 
@@ -68,7 +72,9 @@ class CanvasController < ActionController::Base
             :end => Chronic.parse("this week's " + parseDate(day) + " at " + events[i].time), 
             :allDay => false,
             :color => "#00AA72",
-            :className => "freetime"})
+            :className => "freetime",
+            :id => "freetime" + count.to_s})
+          count += 1
           end
         end 
       else
@@ -85,7 +91,8 @@ class CanvasController < ActionController::Base
             :end => Chronic.parse("this week's " + parseDate(day) + " at " + "24:00"), 
             :allDay => false,
             :color => "#00AA72",
-            :className => "freetime"})
+            :className => "freetime",
+            :id => "freetime" + count.to_s})
     end
      return newevents
   end
@@ -103,7 +110,7 @@ class CanvasController < ActionController::Base
     timecopy = time
     if (timecopy.include?("am"))
       timecopy.sub!(/am/,"")
-    else
+    elsif (timecopy.include?("pm"))
 
       timecopy.sub!(/pm/,"") 
       if (time.split(":")[0].to_i != 12)
@@ -111,6 +118,12 @@ class CanvasController < ActionController::Base
         timecopy.sub!(/^[0-9]*:/,prefix.to_s + ":")
       else
       end
+    elsif (timecopy.include?("AM"))
+      timecopy.sub!(/:00 AM/,"");
+    else 
+      timecopy.sub!(/:00 PM/,"");
+      prefix = time.split(":")[0].to_i + 12
+        timecopy.sub!(/^[0-9]*:/,prefix.to_s + ":")
     end
   
   return timecopy
@@ -174,6 +187,55 @@ class CanvasController < ActionController::Base
   def index
     
     @group = params[:group]
+    if (params[:privates] == "true")
+       @events = []
+      @selecteduser = User.where(:email => params[:email].to_s).first
+      @selecteduser.schedule.courses.each { |c|
+      c.day.each_with_index { |d,i|
+        separateDays(d).each { |x|
+          if (c.credits == nil || c.credits < 1)
+            editable = true
+           else
+           editable = false
+           end 
+          @events.push({:title => "", 
+            :start => Chronic.parse("this week's " + parseDate(x) + " at " + c.starttime[i]).to_s.sub(/-0400/, ""), 
+            :end => Chronic.parse("this week's " + parseDate(x) + " at " + c.endtime[i]).to_s.sub(/-0400/, ""), 
+            :allDay => false,
+            :editable => false,
+            :color => "#000000",
+            :name => @selecteduser.firstname + " " + @selecteduser.lastname})
+        }
+      }
+    }
+    else 
+    if (params[:redrop] == "true")
+      desiredcourse = Course.new
+      current_user.schedule.courses.each { |c|
+        if (c.name == params[:event])
+          desiredcourse = c
+         end 
+      } 
+      desiredcourse.endtime.clear
+      desiredcourse.endtime.push(params[:newend])
+      desiredcourse.starttime.clear
+      desiredcourse.starttime.push(params[:newstart])
+      desiredcourse.day.clear
+      desiredcourse.day.push(unparseday(parseDateNum(params[:newday])))
+      current_user.save
+
+    else  
+    if (params[:resize] == "true")
+      desiredcourse = Course.new
+      current_user.schedule.courses.each { |c|
+        if (c.name == params[:event])
+          desiredcourse = c
+         end 
+      } 
+      desiredcourse.endtime.clear
+      desiredcourse.endtime.push(params[:newend])
+      current_user.save
+    else
     if (params[:addevent] == "true")
       @events = []
     @selecteduser = current_user
@@ -181,7 +243,8 @@ class CanvasController < ActionController::Base
             :start => Chronic.parse("this week's " + parseDateNum(params[:eventday]) + " at " + params[:eventstart]),
             :end => Chronic.parse("this week's " + parseDateNum(params[:eventday]) + " at " + params[:eventend]),
             :allDay => false,
-            :editable => true })
+            :editable => true,
+            :name => @selecteduser.firstname + " " + @selecteduser.lastname })
 
          newcourse = Course.new
          newcourse.name = params[:eventtitle]
@@ -203,11 +266,18 @@ class CanvasController < ActionController::Base
       User.where(:email => user).first.schedule.courses.each { |c|
       c.day.each_with_index { |d,i|
         separateDays(d).each { |x|
+          if (c.credits == nil || c.credits < 1)
+            editable = true
+           else
+           editable = false
+           end 
           @events.push({:title => c.name, 
             :start => Chronic.parse("this week's " + parseDate(x) + " at " + c.starttime[i]).to_s.sub(/-0400/, ""), 
             :end => Chronic.parse("this week's " + parseDate(x) + " at " + c.endtime[i]).to_s.sub(/-0400/, ""), 
             :allDay => false,
-            :color => $defaultColors[color]})
+            :editable => editable,
+            :color => $defaultColors[color],
+            :name => User.where(:email => user).first.firstname + " " + User.where(:email => user).first.lastname})
         }
       }
     }
@@ -219,10 +289,17 @@ class CanvasController < ActionController::Base
     current_user.schedule.courses.each { |c|
       c.day.each_with_index { |d,i|
         separateDays(d).each { |x|
+          if (c.credits == nil || c.credits < 1)
+            editable = true
+           else
+           editable = false
+           end 
           @events.push({:title => c.name, 
             :start => Chronic.parse("this week's " + parseDate(x) + " at " + c.starttime[i]).to_s.sub(/-0400/, ""), 
             :end => Chronic.parse("this week's " + parseDate(x) + " at " + c.endtime[i]).to_s.sub(/-0400/, ""), 
-            :allDay => false})
+            :allDay => false,
+            :editable => editable,
+            :name => @selecteduser.firstname + " " + @selecteduser.lastname})
         }
       }
     }
@@ -248,16 +325,25 @@ class CanvasController < ActionController::Base
       @selecteduser.schedule.courses.each { |c|
       c.day.each_with_index { |d,i|
         separateDays(d).each { |x|
+          if (c.credits == nil || c.credits < 1)
+            editable = true
+           else
+           editable = false
+           end 
           @events.push({:title => c.name, 
             :start => Chronic.parse("this week's " + parseDate(x) + " at " + c.starttime[i]).to_s.sub(/-0400/, ""), 
             :end => Chronic.parse("this week's " + parseDate(x) + " at " + c.endtime[i]).to_s.sub(/-0400/, ""), 
             :allDay => false,
+            :editable => editable,
             :name => @selecteduser.firstname + " " + @selecteduser.lastname})
         }
       }
     }
     end
   end
+end
+end
+end
 end
 end
     respond_to do |format|

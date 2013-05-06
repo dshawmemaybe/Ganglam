@@ -1,18 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Groupid:</b>
+  <b>Group:</b>
   <%= @group.groupid %>
 </p>
 
 <p>
-  <b>User_ids:</b>
+  <b>Current Users:</b>
   <ul>
   <% @group.user_ids.each { |user| %>
-  <li><%= user %> <%= button_to "Remove", {:action => :removeuser, :user => user}, :method => :put %></li>
+  <li><%= link_to User.where(:email => user).first.firstname + " " + User.where(:email => user).first.lastname, User.where(:email => user).first %> <%= button_to "Remove", {:action => :removeuser, :user => user}, :method => :put %></li>
   <% } %>
   </ul>
 </p>
+Add a user by email or user_id:
 <%= form_for @group, :url => { :action => :adduser } do |f| %>
   <%= text_field_tag :user %>
 <% end %>
@@ -24,11 +25,9 @@
         <br />
 <br />
 <br />
-<p>
-  <b>Public:</b>
-  <%= @group.public %>
-</p>
 
 
+<!--
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', "/groups", :method => :get %>
+-->

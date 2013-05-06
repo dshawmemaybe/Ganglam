@@ -1,0 +1,57 @@
+<div id = "welcomewelcome">
+<h1>Welcome, <%= current_user.firstname + " " + current_user.lastname %>!</h1>
+</div>
+<div id = "welcomeschedule">
+	<% if current_user.schedule.courses.empty? %>
+		<h4>Looks like your schedule is empty... would you like to <%= link_to "add some classes?","/courses/new" %></h4>
+	<% else %>
+		<h4>To add and remove classes, visit your <%= link_to "current schedule", "/courses/new" %>.</h4<
+	<% end %>
+</div>
+
+<div id = "welcomegroup">
+	<h4>Looks like you're currently in the following groups:</h4>
+	<ul "welcomegrouplist">
+	<% current_user.group_ids.each { |g| %>
+	<li><%= link_to Group.find(g).groupid,Group.find(g)  %></li>
+	<% } %>
+
+</ul>
+<%= link_to "Create a new group", "/groups/new" %>
+</div>
+
+
+<script>
+$(document).ready(function() {
+$('#samplecalendars').fullCalendar({
+        header: false,
+        minTime: 8,
+        maxTime: 18,
+        defaultEventMinutes: 60,
+        defaultView: "agendaWeek",
+        editable: false,
+        slotMinutes: 30,
+        snapMinutes: 15,
+        allDaySlot: false,
+        weekends: false,
+        eventSources: [
+
+        // your event source
+        {
+            url: '/canvas.json',
+            dataType: 'JSON',
+            data: {
+                email: "<%= current_user.email %>"
+            },
+            error: function() {
+                alert('there was an error while fetching events!');
+            }
+        }
+
+        // any other sources...
+    ]
+        
+        // put your options and callbacks here
+    });
+});
+</script>

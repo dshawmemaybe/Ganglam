@@ -1,5 +1,35 @@
-<h1>New course</h1>
+<h1>Current Schedule</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Section</th>
+    <th>Credits</th>
+    <th>Building</th>
+    <th>Room</th>
+    <th>Day</th>
+    <th>Start Times</th>
+    <th>End Times</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
 
+<% current_user.schedule.courses.each_with_index do |course,i| %>
+  <tr>
+    <td><%= course.name %></td>
+    <td><%= course.section %></td>
+    <td><%= course.credits %></td>
+    <td><%= course.building %></td>
+    <td><%= course.room %></td>
+    <td><%= course.day %></td>
+    <td><%= course.starttime %></td>
+    <td><%= course.endtime %></td>
+    <td><%= link_to 'Show', "/courses/" + i.to_s %></td>
+    <td><%= link_to 'Edit', "/courses/" + i.to_s + "/edit"%></td>
+    <td><%= link_to 'Destroy', "/courses/" + i.to_s , confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
 <%= render 'form' %>
 
-<%= link_to 'Back', courses_path %>
+<%= link_to 'Return Home', "/" %>

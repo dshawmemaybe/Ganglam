@@ -8,7 +8,6 @@ class CoursesController < ApplicationController
 
   def index
     @courses = getUserSchedule().courses
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @courses }
@@ -61,7 +60,7 @@ class CoursesController < ApplicationController
     getUserSchedule().courses.push(@course)
     respond_to do |format|
       if @course.save
-        format.html { redirect_to getUserSchedule(), notice: 'Course was successfully created.' }
+        format.html { redirect_to "/courses/new", notice: 'Course was successfully created.' }
         format.json { render json: @course, status: :created, location: @course }
       else
         format.html { render action: "new" }
@@ -94,7 +93,7 @@ class CoursesController < ApplicationController
     current_user.save
 
     respond_to do |format|
-      format.html { redirect_to courses_url }
+      format.html { redirect_to "/courses/new" }
       format.json { head :no_content }
     end
   end

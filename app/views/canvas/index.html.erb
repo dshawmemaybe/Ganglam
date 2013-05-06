@@ -2,6 +2,8 @@
     <% if @group != nil %>
     <div id = "canvastop">
         <div id = "canvasgroup">
+            <%= link_to(Group.where(:groupid => @group).first) do %><h1><%= @group %></h1> 
+            <% end %>
         </div>
         <div id = "userscroll">
         
@@ -52,7 +54,6 @@ var date = new Date();
         var y = date.getFullYear();
 
     // page is now ready, initialize the calendar...
-    $("#canvasgroup").html("<h1><%= @group %></h1>");
     $("#canvasuser").html("<h3><%= @selecteduser.firstname + " " +  @selecteduser.lastname %></h3>");
   
 
@@ -76,7 +77,7 @@ var date = new Date();
         defaultEventMinutes: 60,
         defaultView: "agendaWeek",
         droppable: true,
-        drop: function(date, allDay) { // this function is called when something is dropped
+        drop: function(date, allDay, jsEvent, ui) { // this function is called when something is dropped
             
                 // retrieve the dropped element's stored Event Object
                 var originalEventObject = $(this).data('eventObject');
@@ -85,16 +86,28 @@ var date = new Date();
                 var copiedEventObject = $.extend({}, originalEventObject);
                 
                 // assign it the date that was reported
-                copiedEventObject.start = date;
-                copiedEventObject.allDay = allDay;
-                copiedEventObject.editable = true;
+                
                 
                 // render the event on the calendar
                 // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-                $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
                 
+        $('#calendar').fullCalendar('renderEvent', copiedEventObject, false);
                 // is the "remove after drop" checkbox checked?
-                
+                $("#eventtime").text(date.toLocaleString());
+        
+        eventDay = date.getDay();
+        eventStartTime = date;
+        $("#eventmodal").modal({
+            backdrop:false
+        });
+
+        $("#eventmodal").draggable({
+            zIndex: 1100,     // will cause the event to go back to its
+                revertDuration: 500,
+        });
+        
+        $("#eventtime").text(date.toLocaleString());
+        $("#eventmodal").css({top:jsEvent.pageY, left:jsEvent.pageX});
             },
         editable: false,
         slotMinutes: 30,
@@ -121,7 +134,7 @@ var date = new Date();
         $("#eventmodal").modal({
             backdrop:false
         });
-        
+
         $("#eventmodal").draggable({
             zIndex: 1100,     // will cause the event to go back to its
                 revertDuration: 500,
@@ -145,12 +158,33 @@ var date = new Date();
     */
 
     },eventClick: function(calEvent, jsEvent, view) {
-        if (calEvent.editable == true){
+        if (calEvent.className == "freetime")
+            $("#calendar").fullCalendar('removeEvents',calEvent.id);
+    },eventResize: function( event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view) {
+        $.ajax({
+            url: 'canvas.json',
+            data: {
+                resize: true,
+                event: event.title,
+                newend: event.end.toLocaleTimeString()
+            }
+        });
+    }, eventDrop: function( event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent  , ui, view){
+        $.ajax({
+            url: 'canvas.json',
+            data: {
+                redrop: true,
+                event: event.title,
+                newday: event.start.getDay(),
+                newstart: event.start.toLocaleTimeString(),
+                newend: event.end.toLocaleTimeString()
+            }
+        })
 
-        // change the border color just for fun
-        calEvent.title = "lol";
-        $("#calendar").fullCalendar('updateEvent', calEvent);
-        }
+    }, eventMouseover: function(event, jsEvent, view){
+        
+    }, eventRender: function(event, element) {
+        
     }
         
         // put your options and callbacks here

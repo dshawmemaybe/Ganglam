@@ -1,1 +1,42 @@
-<%= @search %>
+<div id = "searchresultstitle">
+<h1>Search Results</h1>
+</div>
+<div id = "searchresultsgroup">
+<h3>Groups:</h3>
+<% searchresults = []
+Group.all.each { |g|
+if (g.groupid.include?(@search))
+	searchresults.push(g)
+end	
+} 
+%>
+
+<% if (searchresults.empty?) %>
+	No groups found.
+	<% else %>
+<% searchresults.each { |s| %>
+	<%= link_to s.groupid, s %>
+
+<% } %>
+<% end %>
+</div>
+
+
+<div id = "searchresultsuser">
+<h3>Users: </h3>
+<% searchresults = []
+User.all.each { |g|
+if (g.firstname.include?(@search) || g.lastname.include?(@search) || (g.firstname + " " + g.lastname).include?(@search))
+	searchresults.push(g)
+end	
+} 
+%>
+<% if (searchresults.empty?) %>
+	No users found.
+	<% else %>
+<% searchresults.each { |s| %>
+	<%= link_to s.firstname + " " + s.lastname, s %>
+
+<% } %>
+<% end %>
+</div>

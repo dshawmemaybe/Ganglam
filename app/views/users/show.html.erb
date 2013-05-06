@@ -33,7 +33,8 @@
 
 <p>
   <b>Schedule</b>
-  <%= link_to @user.schedule, @user.schedule %>
+  <div id = "samplecalendar">
+</div>
 
 </p>
 
@@ -41,5 +42,42 @@
   <b>Avatar</b>
   <%= image_tag @user.avatar.url(:thumb) %>
 </p>
+
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+<script>
+$(document).ready(function() {
+$('#samplecalendar').fullCalendar({
+        header: false,
+        minTime: 8,
+        maxTime: 18,
+        defaultEventMinutes: 60,
+        defaultView: "agendaWeek",
+        editable: false,
+        slotMinutes: 30,
+        snapMinutes: 15,
+        allDaySlot: false,
+        weekends: false,
+        eventSources: [
+
+        // your event source
+        {
+            url: '/canvas.json',
+            dataType: 'JSON',
+            data: {
+                email: "<%= @user.email %>",
+                privates: true
+            },
+            error: function() {
+                alert('there was an error while fetching events!');
+            }
+        }
+
+        // any other sources...
+    ]
+        
+        // put your options and callbacks here
+    });
+});
+</script>

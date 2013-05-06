@@ -5,7 +5,8 @@ classes.push(testudo.classid.to_s + " Section:" + testudo.section.to_s)
 } 
 
 %>
-
+<br />
+Add a class:
 <%= form_for @course do |f| %>
         <%= text_field_tag :coursetoadd, nil, :placeholder => "Search for a class", :autocomplete => "off", :data => { :provide=>"typeahead", :source=> classes} %> 
         <% end %>

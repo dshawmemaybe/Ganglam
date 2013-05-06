@@ -43,7 +43,9 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new(params[:group])
-
+    @group.user_ids.push(current_user.email)
+    current_user.group_ids.push(@group.id.to_s)
+    current_user.save
     respond_to do |format|
       if @group.save
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
@@ -87,8 +89,9 @@ class GroupsController < ApplicationController
   # PUT /groups/1.json
   def adduser
   @group = Group.find(params[:id])
+  if (@group.user_ids.include?(params[:user]))
+  else  
   @group.user_ids.push(params[:user])
-  @group.save
 
   if params[:user].include? "@"
      @user = User.where(:email => params[:user]).first
@@ -97,12 +100,26 @@ class GroupsController < ApplicationController
   end
 
   if @user
+    if @user.group_ids.include?(params[:id])
+    else  
       @user.group_ids.push(params[:id])
+    end
   end
-
-  @user.save
-    redirect_to @group
   end
+  respond_to do |format|
+    if (@user == nil)
+      format.html { redirect_to @group, notice: 'Sorry, not a valid email or userid' }
+    else  
+    if (@user.save && @group.save)
+        format.html { redirect_to @group, notice: 'User added to group' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to @group, notice: 'User not added to group' }
+        format.json { render json: @group.errors, status: :unprocessable_entity }
+      end
+  end
+end
+end
 
   def removeuser
     @group = Group.find(params[:id])

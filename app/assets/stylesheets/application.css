@@ -1196,3 +1196,42 @@ input[type="radio"].groupsidebarradio {
 #eventtime {
 	display:inline-block;
 }
+
+#samplecalendar{
+	width:500px;
+	margin: 0 auto;
+}
+
+#searchresultsuser{
+	background-image: linear-gradient(#f9f9f9, #f3f3f3);
+	box-shadow: inset 0 0 8px #eee;
+	border: solid 1px #dbdbdb;
+	border-radius: 3px;
+	margin: 10px;
+}
+
+#searchresultsgroup{
+	background-image: linear-gradient(#f9f9f9, #f3f3f3);
+	box-shadow: inset 0 0 8px #eee;
+	border: solid 1px #dbdbdb;
+	border-radius: 3px;
+	margin: 10px;
+}
+
+#searchresultstitle {
+	margin: 10px;
+	text-align: center;
+}
+
+#welcomewelcome {
+	text-align: center;
+	color: #00AA72;
+}
+
+#welcomegrouplist li {
+	font-size: 20px;
+}
+
+#samplecalendars {
+	margin-top: 20px;
+}
