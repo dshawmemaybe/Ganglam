@@ -135,6 +135,33 @@ class CanvasController < ActionController::Base
     end
   end
  
+  def parseDateNum(day)
+    if (day == "1")
+      return "monday"
+    elsif (day == "2")
+      return "tuesday"
+    elsif (day == "3")
+      return "wednesday"
+    elsif (day == "4")
+      return "thursday"
+    else 
+      return "friday"   
+    end
+  end
+
+  def unparseday(day)
+    if (day == "monday")
+      return "M"
+    elsif (day == "tuesday")
+      return "Tu"
+    elsif (day == "wednesday")
+      return "W"
+    elsif (day == "thursday")
+      return "Th"
+    else 
+      return "F"   
+    end
+  end
     def user_layout
      if current_user
         "application"
@@ -147,11 +174,29 @@ class CanvasController < ActionController::Base
   def index
     
     @group = params[:group]
+    if (params[:addevent] == "true")
+      @events = []
+    @selecteduser = current_user
+          @events.push({:title => params[:eventtitle], 
+            :start => Chronic.parse("this week's " + parseDateNum(params[:eventday]) + " at " + params[:eventstart]),
+            :end => Chronic.parse("this week's " + parseDateNum(params[:eventday]) + " at " + params[:eventend]),
+            :allDay => false,
+            :editable => true })
+
+         newcourse = Course.new
+         newcourse.name = params[:eventtitle]
+         newcourse.day.push(unparseday(parseDateNum(params[:eventday])))
+         newcourse.starttime.push(params[:eventstart])
+         newcourse.endtime.push(params[:eventend])
+         @selecteduser.schedule.courses.push(newcourse)
+         @selecteduser.save
+    else  
     if (params[:freetime] == "true")
       @events = intersecting(@group, params[:day], params[:min])
      else 
 
     if (params[:overlay] == "true")
+      $count = 0
       users = Group.where(:groupid => @group).first.user_ids
       @events = []
       users.each_with_index {|user, color|
@@ -213,6 +258,7 @@ class CanvasController < ActionController::Base
     }
     end
   end
+end
 end
     respond_to do |format|
       format.html # index.html.erb

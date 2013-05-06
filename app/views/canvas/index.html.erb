@@ -1,14 +1,20 @@
 <div id = "canvastopbar">
+    <% if @group != nil %>
     <div id = "canvastop">
         <div id = "canvasgroup">
         </div>
-        <br />
-
+        <div id = "userscroll">
+        
         <div id ="canvasuser">
         </div>
-        <span class = "fc-button fc-state-default" id = "backuser"> <-- </span>
-        <span class = "fc-button fc-state-default" id = "nextuser"> --> </span>
+        <div id = "scrollbuttons">
+        <span class = "fc-button fc-state-default" id = "backuser"><i class = "icon-arrow-left icon-large" ></i></span>
+        <span class = "fc-button fc-state-default" id = "nextuser"><i class = "icon-arrow-right icon-large" ></i> </span>
+        </div>
+       
+        </div>
     </div>
+     <% end %>
 </div>
 
 
@@ -16,12 +22,38 @@
 
 <script>
 $(document).ready(function() {
+     var eventDay;
+    var eventStartTime;
+    var eventEnd;
+    $('div.external-event').each(function() {
+        
+            // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+            // it doesn't need to have a start or end
+            var eventObject = {
+                title: $.trim($(this).text()) // use the element's text as the event title
+            };
+            
+            // store the Event Object in the DOM element so we can get to it later
+            $(this).data('eventObject', eventObject);
+            // make the event draggable using jQuery UI
+            $(this).draggable({
+                zIndex: 1100,
+                revert: false,
+                helper:'clone',
+                appendTo: '#calendar',      // will cause the event to go back to its
+                revertDuration: 500  //  original position after the drag
+            });
+            
+        });
 
-
+var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
 
     // page is now ready, initialize the calendar...
-    $("#canvasgroup").html("Currently Selected Group: " + "<%= @group %>");
-    $("#canvasuser").html("Current User: " + "<%= @selecteduser.firstname + " " +  @selecteduser.lastname %>");
+    $("#canvasgroup").html("<h1><%= @group %></h1>");
+    $("#canvasuser").html("<h3><%= @selecteduser.firstname + " " +  @selecteduser.lastname %></h3>");
   
 
     $("input[type='radio']").click(function() {
@@ -40,7 +72,30 @@ $(document).ready(function() {
     $('#calendar').fullCalendar({
         header: {left:'month agendaWeek agendaDay', center: 'title'},
         minTime: 8,
+        maxTime: 24,
+        defaultEventMinutes: 60,
         defaultView: "agendaWeek",
+        droppable: true,
+        drop: function(date, allDay) { // this function is called when something is dropped
+            
+                // retrieve the dropped element's stored Event Object
+                var originalEventObject = $(this).data('eventObject');
+                
+                // we need to copy it, so that multiple events don't have a reference to the same object
+                var copiedEventObject = $.extend({}, originalEventObject);
+                
+                // assign it the date that was reported
+                copiedEventObject.start = date;
+                copiedEventObject.allDay = allDay;
+                copiedEventObject.editable = true;
+                
+                // render the event on the calendar
+                // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+                $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+                
+                // is the "remove after drop" checkbox checked?
+                
+            },
         editable: false,
         slotMinutes: 30,
         snapMinutes: 15,
@@ -62,7 +117,41 @@ $(document).ready(function() {
         }
 
         // any other sources...
-    ]
+    ],dayClick: function(date, allDay, jsEvent, view) {
+        $("#eventmodal").modal({
+            backdrop:false
+        });
+        
+        $("#eventmodal").draggable({
+            zIndex: 1100,     // will cause the event to go back to its
+                revertDuration: 500,
+        });
+        $("#eventmodal").css({top:(jsEvent.pageY), left:jsEvent.pageX});
+        $("#eventtime").text(date.toLocaleString());
+        
+        eventDay = date.getDay();
+        eventStartTime = date;
+      /*
+        $('#calendar').fullCalendar('addEventSource', {
+            url: '/canvas.json',
+            data: {
+                group: "<%= @group %>",
+                addNew: true,
+                day: date.getDay(),
+                starttime: date.getHours(),
+            },
+            async:false
+        });
+    */
+
+    },eventClick: function(calEvent, jsEvent, view) {
+        if (calEvent.editable == true){
+
+        // change the border color just for fun
+        calEvent.title = "lol";
+        $("#calendar").fullCalendar('updateEvent', calEvent);
+        }
+    }
         
         // put your options and callbacks here
     });
@@ -79,7 +168,7 @@ $('#calendar').fullCalendar('addEventSource', {
             },
             async:false,
             success: function(result) {
-                $("#canvasuser").html("Current User: " + result[0].name);
+                $("#canvasuser").html("<h3>" + result[0].name + "</h3>");
             }
         });
 });
@@ -96,7 +185,7 @@ $('#calendar').fullCalendar('addEventSource', {
             },
             async:false,
             success: function(result) {
-                $("#canvasuser").html("Current User: " + result[0].name);
+                $("#canvasuser").html("<h3>" + result[0].name + "</h3>");
             }
         });
 });
@@ -104,6 +193,7 @@ $("#individualscroll").click(function() {
     if (!$(this).hasClass("active")){
     $("#groupoverlay").removeClass("active");
     $("#individualscroll").addClass("active");
+    $("#userscroll").show();
     $('#calendar').fullCalendar('removeEventSource', {
             url: '/canvas.json'
         });
@@ -118,18 +208,20 @@ $("#individualscroll").click(function() {
             async:false,
             success: function(result) {
                 $("#canvasuser").show();
+                $("#canvasuser").html("<h3><%= @selecteduser.firstname + " " +  @selecteduser.lastname %></h3>");
             }
         });
     }
 });
 
 $("#groupoverlay").click(function() {
-    if (!$(this).hasClass("active")){
+    if (!$(this).hasClass("active") && $("#canvasuser").is(":visible")){
     $('#calendar').fullCalendar('removeEventSource', {
             url: '/canvas.json'
         });
     $("#groupoverlay").addClass("active");
     $("#individualscroll").removeClass("active");
+    $("#userscroll").hide();
 $('#calendar').fullCalendar('addEventSource', {
             url: '/canvas.json',
             data: {
@@ -146,6 +238,7 @@ $('#calendar').fullCalendar('addEventSource', {
 });
 
 $("#freetime").click(function() {
+    var results;
     $('#calendar').fullCalendar('addEventSource', {
             url: '/canvas.json',
             data: {
@@ -156,7 +249,30 @@ $("#freetime").click(function() {
                 min: $("#freeDur").val()
             },
             async:false
+
+            
         });
+
+});
+
+$("#addevent").click(function() {
+    eventEnd = new Date(eventStartTime.getTime() + $("#neweventduration").val()*60000).toLocaleTimeString();
+    $('#calendar').fullCalendar('addEventSource', {
+            url: '/canvas.json',
+            data: {
+                group: "<%= @group %>",
+                next: false,
+                addevent: true,
+                eventtitle: $("#neweventtitle").val(),
+                eventstart: eventStartTime.toLocaleTimeString(),
+                eventend: eventEnd,
+                eventday: eventDay
+            },
+            async:false
+
+            
+        });
+        $("#eventmodal").modal('hide');
 });
 
 $("#daily").click(function() {
@@ -182,3 +298,20 @@ $("#monthly").click(function() {
 
 });
 </script>
+<div id="eventmodal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Add an Event</h3>
+  </div>
+  <div class="modal-body">
+    Event Title: <textarea id = "neweventtitle" rows = "1" max-length = "4"></textarea>
+    <br />
+    Event Start: <p id = "eventtime"></p>
+    <br />
+    Event Duration: <textarea id = "neweventduration" rows = "1" max-length = "4"></textarea> minutes
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary" id = "addevent">Add event!</button>
+  </div>
+</div>

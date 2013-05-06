@@ -1085,7 +1085,7 @@ input#user_remember_me.signincheck {
 }
 
 .modal.fade.in {
-	top:15% !important;
+	top:15%;
 }
 
 .modal {
@@ -1099,12 +1099,27 @@ input#user_remember_me.signincheck {
 	margin-bottom: 10px;
 }
 
+#canvastop {
+	border-bottom: 2px solid #00AA72;
+}
+
 #canvasgroup {
 	display: inline-block;
 }
 
+
+#canvasgroup h1 {
+	color: #3a87ad;
+	margin-left: 20px;
+}
+
 #canvasuser {
 	display: inline-block;
+}
+
+#canvasuser h3 {
+	margin-right:20px;
+	vertical-align: bottom;
 }
 
 input[type="radio"].groupsidebarradio {
@@ -1131,4 +1146,53 @@ input[type="radio"].groupsidebarradio {
 
 .btn.active h3 {
 	color: #00AA72 !important;
+}
+
+#userscroll {
+	display: inline-block;
+	float:right;
+	margin-right:20px;
+}
+
+#scrollbuttons {
+	display: inline-block;
+	padding:0;
+	margin-bottom: 20px;
+}
+
+#scrollbuttons span{
+	bottom: 5px;
+}
+
+#calendar {
+	margin-top: 20px;
+}
+
+.external-event { /* try to mimick the look of a real event */
+		margin: 5px 0;
+		padding: 2px 4px;
+		background: #3366CC;
+		color: #fff;
+		text-align: center;
+		font-size: .85em;
+		cursor: pointer;
+		border: 1px solid #3a87ad;
+		background-color: #3a87ad;
+		border-radius: 3px;
+		width:164px;
+		height:20px;
+		}
+
+#eventmodal {
+	z-index: 2000;
+	margin-top:0 !important;
+	margin-left:0 !important;
+}
+
+#eventmodal.modal.fade.in {
+	top: 0;
+}
+
+#eventtime {
+	display:inline-block;
 }

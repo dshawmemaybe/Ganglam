@@ -118,7 +118,7 @@ usersandgroups.push(user.firstname + " " + user.lastname)}
         <% User.sort(:firstname).each { |user| %>
            <li> 
             <%= link_to(User.where(:email => user.email).first) do %><h3><%= user.firstname + " " + user.lastname %></h3>
-            <%  small = "."  
+            <%  small = ""  
               if !user.userid.nil?   
                 small = user.userid   
               else   
@@ -161,8 +161,7 @@ usersandgroups.push(user.firstname + " " + user.lastname)}
         <ul class = "functionsidebar">
           <li><a href = "#freeTimeModal" id = "avalTime" role="button" class="btn" data-toggle="modal">
             <h3>Show Available Times</h3></a></li>
-          <li><a><h3>Add Event</h3></a></li>
-          <li><a><h3>Change Colors</h3></a></li>
+          <li><a><div class='external-event'>Add Event</div></a></li>
       </ul>
       </div>
     </div>
