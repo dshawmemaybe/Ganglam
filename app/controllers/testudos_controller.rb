@@ -1,4 +1,4 @@
-
+require 'parseTestudo'
 class TestudosController < ApplicationController
   # GET /testudos
   # GET /testudos.json
