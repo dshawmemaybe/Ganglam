@@ -185,7 +185,8 @@ class CanvasController < ActionController::Base
     end 
 
   def index
-    
+    Time.zone = "Eastern Time (US & Canada)"
+    Chronic.time_class = Time.zone
     @group = params[:group]
     if (params[:privates] == "true")
        @events = []
